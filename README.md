@@ -1,1 +1,1 @@
-[https://github.com/greenfox-zerda-lasers/gygabor]
+https://github.com/greenfox-zerda-lasers/gygabor
