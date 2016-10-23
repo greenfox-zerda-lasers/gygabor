@@ -34,8 +34,8 @@ hgroup {
 }
 
 .div1 {
-      margin: 0px 290px 0px 290px;
-      font-size: 19px;
+      margin: 0px 300px 60px 290px;
+      font-size: 20px;
 }
 
 h2 {
@@ -56,17 +56,20 @@ li {
 
 blockquote {
       position: relative;
-      margin: 0px 250 40px 250;
-      padding: 20px;
+      margin: 0px 240px 0px 243px;
+      padding: 48px;
       color: white;
       font-family: 'Abril Fatface', cursive;
       background-color: rgb(68,68,68);
-      font-size: 40px;
+      font-size: 47px;
 
 }
 
 blockquote::after {
       content: "“";
+      font-size: 135px;
+      line-height: 0.8;
+      margin: 0px;
       position: absolute;
       top: 0;
       left: 0;
