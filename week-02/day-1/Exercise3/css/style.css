@@ -1,0 +1,52 @@
+body {
+      box-sizing: border-box;
+      margin: auto;
+
+}
+
+header {
+      height: 95px;
+      background-color: #00ffff;
+}
+
+footer {
+      height: 95px;
+      background-color: #0000fe;
+}
+
+.main {
+      display:flex;
+      justify-content: space-between;
+}
+
+div {
+      height: 480px;
+}
+
+.orange {
+      background-color: #fea500;
+      flex-basis: 95px;
+      margin-right: 20px;
+}
+
+.red {
+      background-color: #fe0000;
+      flex: 1 1 290px;
+      position: relative;
+}
+
+.purple {
+      background-color: #81007f;
+      flex-basis: 95px;
+      margin-left: 20px;
+
+}
+
+.black {
+      background-color: #000;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+}
