@@ -1,0 +1,101 @@
+.body {
+      box-sizing: border-box;
+      width: 550px;
+      border-bottom: 2px solid black;
+      margin: 10px 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+}
+
+.section1:after {
+      content: .wow-box;
+      position: absolute;
+      top: 10px;
+      left: 1px;
+}
+
+.duck-left {
+  border-bottom: 2px solid black;
+}
+
+.duck-left img, .duck-right img {
+      float: left;
+      margin-right: 10px;
+}
+
+.duck-right img{
+      float: right;
+      margin: 10px 0px 0px 10px;
+}
+
+p {
+      text-align: justify;
+}
+
+.wow-box {
+      position: relative;
+      box-sizing: border-box;
+      width: 245px;
+      border: 2px solid black;
+      border-radius: 10px;
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
+      left: 100px;
+      top: 10px;
+      z-index: 1;
+}
+
+.x {
+      color: white;
+      background-color: black;
+      padding: 1px 5px;
+      border-radius: 12px;
+      position: absolute;
+      right: 20px;
+      top: -10px;
+}
+
+.wow-box p:nth-child(1) {
+      color: red;
+      padding: 15px 20px;
+      border-bottom: 2px solid black;
+      margin: 0px;
+}
+
+.wow-box p:nth-child(2) {
+      padding: 15px 20px;
+      border-bottom: 2px solid black;
+      margin: 0px;
+
+}
+
+.buttons {
+      display: flex;
+      margin: 0px;
+      padding: 15px 15px;
+      border: 0px;
+      justify-content: flex-end;
+}
+
+.button-1 {
+      display: inline-block;
+      padding: 5px 5px;
+      background-color: gray;
+      border-radius: 10px;
+      margin-right: 10px;
+}
+
+.button-2 {
+      display: inline-block;
+      padding: 5px 5px;
+      background-color: gray;
+      border-radius: 10px;
+}
+
+.box-position {
+      position: absolute;
+      left: 1px;
+      top: 10px;
+}

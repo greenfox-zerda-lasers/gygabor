@@ -1,0 +1,209 @@
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Duck 2</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+    <form>
+
+    <!-- HEADER !-->
+
+    <header>
+      <h1>Profil</h1>
+    </header>
+
+    <!-- HEADER END !-->
+
+    <!-- COLUMNS !-->
+
+    <section class="records">
+
+
+      <!-- COLUMN 1 !-->
+
+      <div class="personal-records">
+        <h2>Személyes adatok</h2>
+
+
+          <label for"name">Név</label>
+          <input type="text" id="name"/>
+
+          <!-- INSIDE COLUMNS !-->
+
+          <div class="column">
+
+            <!-- INSIDE COLUMN1 !-->
+
+            <div class="column1">
+                <label for="date">Születési éved?</label>
+                <input type="text" placeholder="pl. 1984" maxlength=4 id="date"/>
+            </div>
+
+            <!-- INSIDE COLUMN1 END!-->
+
+
+            <!-- INSIDE COLUMN2 !-->
+
+            <div class="column2">
+              <h3 class="gender">Nemed</h3>
+
+              <div>
+                <input type="radio" id="female" name="genders"/>
+                <label for="female">Nő</label>
+
+                <input type="radio" id="male" name="genders"/>
+                <label for="male">Férfi</label>
+              </div>
+            </div>
+            <!-- INSIDE COLUMN2 END!-->
+
+          </div>
+
+          <!-- INSIDE COLUMNS END!-->
+
+
+          <!-- BRAND COLUMNS!-->
+          <h3 class="brand">Milyen márkát szeretsz?</h3>
+
+          <div class="column wich-brand">
+
+
+          <!-- BRAND COLUMN1 !-->
+
+            <div class="column1">
+
+                <div>
+                  <input type="checkbox" id="adidas"/>
+                  <label for="adidas">Adidas</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="apple"/>
+                  <label for="apple">Apple</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="coca-cola"/>
+                  <label for="coca-cola">Coca-Cola</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="mazda"/>
+                  <label for="mazda">Mazda</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="nike"/>
+                  <label for="nike">Nike</label>
+                </div>
+            </div>
+
+            <!-- BRAND COLUMN1 END !-->
+
+
+            <!-- BRAND COLUMN2 !-->
+
+            <div class="column2">
+              <div>
+                <input type="checkbox" id="opel"/>
+                <label for="opel">Opel</label>
+              </div>
+              <div>
+                <input type="checkbox" id="ray-ban"/>
+                <label for="ray-ban">Ray-Ban</label>
+              </div>
+              <div>
+                <input type="checkbox" id="starbucks"/>
+                <label for="starbucks">Starbucks</label>
+              </div>
+              <div>
+                <input type="checkbox" id="tesla"/>
+                <label for="tesla">Tesla</label>
+              </div>
+              <div>
+                <input type="checkbox" id="yahoo"/>
+                <label for="yahoo">Yahoo</label>
+              </div>
+
+            </div>
+            <!-- BRAND COLUMN2 END!-->
+
+          </div>
+
+          <h4>Többet is választhatsz!</h4>
+
+        </div>
+
+          <!-- INSIDE COLUMNS END!-->
+
+
+          <!-- COLUMN 2 !-->
+
+          <div class="contact-records">
+            <h2>Kapcsolat</h2>
+
+            <div>
+              <label for"phone">Telefonszám*</label>
+              <input type="tel" id="phone">
+            </div>
+            <div>
+              <label for"email">E-mail cím*</label>
+              <input type="email" id="email">
+            </div>
+            <div>
+              <label for"facebook">Facebook profilod</label>
+              <input type="url" id="facebook">
+            </div>
+            <div>
+              <label for"twitter">Twitter profilod</label>
+              <input type="url" id="twitter">
+            </div>
+            <div>
+              <label for"house">Milyen házban laksz?</label/>
+              <select name="house-check" id="house">
+                <option value="value1">Válassz típust!</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- COLUMN 2 END !-->
+
+      </section>
+
+        <!-- INTRODUCTION !-->
+
+      <section class="introduction">
+        <label for="intro">Bemutatkozás</label>
+        <textarea id="intro" rows="4" cols="50" placeholder="Írj magadról pár mondatot!" name="introduc"></textarea>
+      </section>
+
+        <!-- UPLOAD !-->
+
+      <section class="cv-upload">
+
+        <label for="cv">CV feltöltése</label>
+        <input type=file id="cv" name="upload"></textarea>
+
+      </section>
+
+      <!-- ACCEPT! !-->
+
+      <section class="accept">
+        <input type="checkbox" id="acc"/>
+        <label for="acc">Elfogadom a felhasználási feltételeket</label>
+      </section>
+
+      <!-- BUTTONS !-->
+
+      <section class="button">
+          <button type="submit">MENTÉS</button>
+          <button type="submit">ŰRLAP TÖRLÉSE</button>
+      </section>
+
+    </form>
+  </body>
+
+</html>

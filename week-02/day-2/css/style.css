@@ -1,0 +1,114 @@
+html {
+      background-color: white;
+}
+body {
+      box-sizing: border-box;
+      width: 820px;
+      height: 1000px;
+      padding: 50px 100px;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #dcd6cd;
+      color: #4a4261;
+}
+
+h2 {
+      font-weight: normal;
+      font-size: 16px;
+      color: white;
+      background-color: #938c97;
+      border-radius: 2px;
+}
+
+label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+
+}
+
+h3 {
+      margin: 0px;
+      font-size: 14;
+      font-weight: bold;
+}
+
+h4 {
+  margin: 0px;
+  font-size: 14;
+  font-weight: 100;
+}
+
+.records {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+}
+
+.personal-records {
+      box-sizing: border-box;
+      flex-basis: 300px;
+}
+
+.contact-records {
+      box-sizing: border-box;
+      flex-basis: 300px;
+      flex-direction: column;
+}
+
+input[id="name"] {
+      display: block;
+      width: 300px;
+}
+
+.column {
+      box-sizing: border-box;
+      flex-basis: 300px;
+      display: flex;
+      justify-content: space-between;
+}
+
+.column1 {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+}
+
+.column2 {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+
+}
+
+label[for="date"] {
+      flex: 1;
+}
+
+.gender {
+      flex: 1;
+      display: block;
+}
+
+.wich-brand {
+      flex: 1;
+}
+
+.brand {
+      display: block;
+      flex: 1;
+}
+
+input[type="radio"], input[type="checkbox"] {
+      flex: 1;
+}
+
+.column label, .accept label {
+      display: inline;
+}
+
+.button {
+      display: flex;
+      justify-content: space-between;
+}
