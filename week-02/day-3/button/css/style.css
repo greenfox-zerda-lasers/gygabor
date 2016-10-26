@@ -8,7 +8,7 @@ button {
         color: white;
         margin: 10px;
         border: 0px;
-
+        text-shadow: 0px 0px 5px;
 }
 
 #gray {
@@ -19,11 +19,20 @@ button {
         box-shadow: 0px 0px 5px #c3d1d9;
 }
 
-#gray:hover {
+#gray:hover{
             background-color: #ffffff;
             background: linear-gradient(#ffffff, #e1e1e1);
 }
 
+#gray:active{
+            background-color: #e1e1e1;
+            background: linear-gradient(#e1e1e1, #7e7e7e);
+            color: #454545;
+}
+
+#gray:focus{
+            border: 2px solid #white;
+}
 
 #blue {
         background-color: #00b5e5;
@@ -32,12 +41,16 @@ button {
         box-shadow: 0px 0px 5px #c3d1d9;
 }
 
-
 #blue:hover {
             background-color: #00caff;
             background: linear-gradient(#00caff, #008cb2);
 }
 
+#blue:active{
+            background-color: #008cb2;
+            background: linear-gradient(#008cb2, #002d39);
+            color: #454545;
+}
 
 #green {
         background-color: #8fcf00;
@@ -46,8 +59,13 @@ button {
         box-shadow: 0px 0px 5px #c3d1d9;
 }
 
-
 #green:hover {
             background-color: #a4ed00;
             background: linear-gradient(#a4ed00, #6b9c00);
+}
+
+#green:active{
+            background-color: #6b9c00;
+            background: linear-gradient(#6b9c00, #2d4200);
+            color: #454545;
 }
