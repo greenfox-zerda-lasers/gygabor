@@ -11,31 +11,46 @@ body {
       color: #4a4261;
 }
 
+h1 {
+      font-weight: lighter;
+      font-size: 20px;
+      border-radius: 3px;
+}
+
 h2 {
-      font-weight: normal;
+      font-weight: lighter;
       font-size: 16px;
       color: white;
       background-color: #938c97;
-      border-radius: 2px;
+      padding: 10px;
+      border-radius: 3px;
 }
 
 label {
       font-size: 14px;
       font-weight: bold;
       display: block;
-
+      padding: 10px 0px;
 }
 
 h3 {
       margin: 0px;
       font-size: 14;
       font-weight: bold;
+      padding: 10px 0px;
 }
 
 h4 {
-  margin: 0px;
-  font-size: 14;
-  font-weight: 100;
+      margin: 0px;
+      font-size: 14;
+      font-weight: 100;
+}
+
+input {
+      box-sizing: border-box;
+      padding: 10px 0px;
+      border-radius: 3px;
+
 }
 
 .records {
@@ -106,6 +121,11 @@ input[type="radio"], input[type="checkbox"] {
 
 .column label, .accept label {
       display: inline;
+}
+
+.contact-records input {
+      display: block;
+      width: 300px;
 }
 
 .button {
