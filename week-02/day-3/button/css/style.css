@@ -31,7 +31,8 @@ button {
 }
 
 #gray:focus{
-            border: 2px solid #white;
+            border: 2px solid white;
+            outline: 0px;
 }
 
 #blue {
@@ -52,6 +53,12 @@ button {
             color: #454545;
 }
 
+#blue:focus{
+            border: 2px solid white;
+            outline: 0px;
+}
+
+
 #green {
         background-color: #8fcf00;
         background: linear-gradient(#8fcf00, #6b9c00);
@@ -68,4 +75,9 @@ button {
             background-color: #6b9c00;
             background: linear-gradient(#6b9c00, #2d4200);
             color: #454545;
+}
+
+#green:focus{
+            border: 2px solid white;
+            outline: 0px;
 }
