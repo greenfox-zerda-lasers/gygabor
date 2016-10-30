@@ -1,6 +1,6 @@
-.body {
+body {
       box-sizing: border-box;
-      width: 550px;
+      width: 480px;
       border-bottom: 2px solid black;
       margin: 10px 30px;
       position: relative;
@@ -19,9 +19,9 @@
   border-bottom: 2px solid black;
 }
 
-.duck-left img, .duck-right img {
+.duck-left img {
       float: left;
-      margin-right: 10px;
+      margin: 16px 10px 0px 0px;
 }
 
 .duck-right img{
@@ -45,6 +45,7 @@ p {
       left: 100px;
       top: 10px;
       z-index: 1;
+      background-color: white;
 }
 
 .x {
@@ -96,6 +97,6 @@ p {
 
 .box-position {
       position: absolute;
-      left: 1px;
-      top: 10px;
+      left: 40px;
+      top: 20px;
 }
