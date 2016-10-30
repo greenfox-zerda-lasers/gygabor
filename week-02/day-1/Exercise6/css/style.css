@@ -1,0 +1,42 @@
+body {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 600px;
+      height: 480px;
+      background-color: #808080;
+      position: relative;
+}
+
+div {
+      box-sizing: border-box;
+      width: 190px;
+      height: 150px;
+      background-color: #ff6347;
+      border: 5px solid black;
+      margin: 0px;
+}
+
+.frame {
+      display: flex;
+      border: 0;
+      background-color: #808080;
+      position: relative;
+}
+
+.moved {
+      border: 0;
+      text-align: center;
+      font-family: arial;
+      font-size: 31px;
+      padding-top: 20px;
+      box-sizing: border-box;
+      width: 190px;
+      height: 150px;
+      background-color: #ff6347;
+      border: 5px solid black;
+      position: absolute;
+      left: 20px;
+      top: 15px;
+}
