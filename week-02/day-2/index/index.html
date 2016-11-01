@@ -31,7 +31,7 @@
         <h2>Személyes adatok</h2>
 
 
-          <label for"name">Név</label>
+          <label for"name">Név<span>*</span></label>
           <input type="text" id="name"/>
 
           <!-- INSIDE COLUMNS !-->
@@ -41,7 +41,7 @@
             <!-- INSIDE COLUMN1 !-->
 
             <div class="column1">
-                <label for="date">Születési éved?</label>
+                <label for="date">Születési éved</label>
                 <input type="text" placeholder="pl. 1984" maxlength=4 id="date"/>
             </div>
 
@@ -76,7 +76,7 @@
 
           <!-- BRAND COLUMN1 !-->
 
-            <div class="column1">
+            <div class="column3">
 
                 <div>
                   <input type="checkbox" id="adidas"/>
@@ -132,7 +132,7 @@
 
           </div>
 
-          <h4>Többet is választhatsz!</h4>
+          <p>Többet is választhatsz!</p>
 
         </div>
 
@@ -145,20 +145,20 @@
             <h2>Kapcsolat</h2>
 
             <div>
-              <label for"phone">Telefonszám*</label>
-              <input type="tel" id="phone">
+              <label for"phone">Telefonszám<span>*</span></label>
+              <input type="tel" placeholder="+36 -- --- ----" id="phone">
             </div>
             <div>
-              <label for"email">E-mail cím*</label>
-              <input type="email" id="email">
+              <label for"email">E-mail cím<span>*</span></label>
+              <input type="email" placeholder="nev@domain.hu" id="email">
             </div>
             <div>
               <label for"facebook">Facebook profilod</label>
-              <input type="url" id="facebook">
+              <input type="url" placeholder="http://facebook.com/..." id="facebook">
             </div>
             <div>
               <label for"twitter">Twitter profilod</label>
-              <input type="url" id="twitter">
+              <input type="url" placeholder="http://twitter.com/..." id="twitter">
             </div>
             <div>
               <label for"house">Milyen házban laksz?</label/>
@@ -176,16 +176,16 @@
         <!-- INTRODUCTION !-->
 
       <section class="introduction">
-        <label for="intro">Bemutatkozás</label>
+        <label for="intro">Bemutatkozás<span>*</span></label>
         <textarea id="intro" rows="4" cols="50" placeholder="Írj magadról pár mondatot!" name="introduc"></textarea>
       </section>
 
         <!-- UPLOAD !-->
 
       <section class="cv-upload">
-
-        <label for="cv">CV feltöltése</label>
-        <input type=file id="cv" name="upload"></textarea>
+        <h3>CV Feltöltése</h3>
+        <label class="file-button" for="cv">File Kiválasztása</label>
+        <input type="file" placeholder="File kiválasztása" id="cv" name="upload"/>
 
       </section>
 
@@ -193,14 +193,14 @@
 
       <section class="accept">
         <input type="checkbox" id="acc"/>
-        <label for="acc">Elfogadom a felhasználási feltételeket</label>
+        <label for="acc">Elfogadom a <a href=""> felhasználási feltételeket</a></label>
       </section>
 
       <!-- BUTTONS !-->
 
       <section class="button">
-          <button type="submit">MENTÉS</button>
-          <button type="submit">ŰRLAP TÖRLÉSE</button>
+          <button type="submit" id="save">MENTÉS</button>
+          <button type="submit" id="delete">ŰRLAP TÖRLÉSE</button>
       </section>
 
     </form>

@@ -14,7 +14,6 @@ body {
 h1 {
       font-weight: lighter;
       font-size: 20px;
-      border-radius: 3px;
 }
 
 h2 {
@@ -40,17 +39,19 @@ h3 {
       padding: 10px 0px;
 }
 
-h4 {
-      margin: 0px;
+p {
+      margin: 20px 0px 0px 0px;
       font-size: 14;
-      font-weight: 100;
+      font-weight: lighter;
+      color: gray;
 }
 
 input {
       box-sizing: border-box;
-      padding: 10px 0px;
-      border-radius: 3px;
-
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: lighter;
 }
 
 .records {
@@ -83,6 +84,13 @@ input[id="name"] {
 }
 
 .column1 {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+}
+
+.column3 {
       flex: 1;
       display: flex;
       flex-wrap: wrap;
@@ -131,4 +139,99 @@ input[type="radio"], input[type="checkbox"] {
 .button {
       display: flex;
       justify-content: space-between;
+      margin-top: 20px;
+}
+
+.column2 label, .column3 label {
+      font-weight: lighter;
+}
+
+#date {
+      width: 80px;
+}
+
+#house {
+      height: 38px;
+      width: 300px;
+      color: gray;
+      font-size: 14px;
+      background-color: white;
+}
+
+input[type=checkbox] {
+      width: 20px;
+      height: 20px;
+}
+
+#intro {
+      box-sizing: border-box;
+      width: 620px;
+      height: 170px;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 10px;
+      font-weight: lighter;
+      margin-bottom: 5px;
+}
+
+.introduction label {
+      font-size: 14px;
+}
+
+input[type=file] {
+      display: none;
+}
+
+.file-button {
+      box-sizing: border-box;
+      width: 220px;
+      height: 35px;
+      background-color: #e7e7e7;
+      background: linear-gradient(to top, #e7e7e7, #fff);
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid black;
+      padding: 7px;
+      font-weight: lighter;
+      cursor: pointer;
+}
+
+.accept {
+      margin-top: 20px;
+}
+
+.accept label {
+      font-weight: lighter;
+}
+
+#save {
+      width: 220px;
+      height: 45px;
+      background-color: #443b56;
+      backgroun: linear-gradient(to top, #443b56, #5C5170);
+      color: #dcd6cd;
+      border-radius: 5px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0px;
+}
+
+#delete {
+      width: 160px;
+      height: 45px;
+      background-color: #e7e7e7;
+      background: linear-gradient(to top, #e7e7e7, #fff);
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: lighter;
+      cursor: pointer;
+      color: #4a4261;
+}
+
+span {
+      color: red;
+}
+
+a {
+      color: gray;
 }
