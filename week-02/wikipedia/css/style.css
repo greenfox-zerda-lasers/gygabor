@@ -39,7 +39,7 @@ body {
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 90px;
+        height: 80px;
         padding: 10px 20px 0px 0px;
         background-color: #f6f6f6;
         background: linear-gradient(to top, #f6f6f6 60%, #fff);
@@ -59,7 +59,6 @@ body {
         justify-content: space-between;
         height: 45px;
         width: 100%;
-        margin: 10px 0px 0px 0px;
 }
 
 .article-nav {
@@ -130,11 +129,15 @@ li ul {
 
 .page-info {
         box-sizing: border-box;
-        display: block;
         width: 100%;
         height: 180px;
-        padding: 20px 20px 0px 20px;
+        padding: 10px 20px 30px 20px;
         background-color: #f6f6f6;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        box-sizing: border-box;
+        font-size: 10px;
 }
 
 .nasa-pic {
@@ -256,10 +259,19 @@ cite {
         padding: 0px;
 }
 
+.button-article {
+        display: flex;
+        justify-content: flex-start;
+}
+
+.button-read {
+          display: flex;
+          justify-content: flex-end;
+}
+
 button {
         text-align: center;
-        padding: 0px 2px;
-        width: content;
+        padding: 0px 5px;
         height: 26px;
         font-size: 12px;
         font-weight: lighter;
@@ -268,17 +280,35 @@ button {
         z-index: 1;
         border: 1px solid #bed2dd;
         border-top: 0px;
-        border-image: linear-gradient(to top, transparent 0%, #bed2dd 50%, transparent 100%) 0 1 0 1;
+        border-image: linear-gradient(to bottom, transparent 0%, #bed2dd) 0 1 0 1;
+        color: #3269ac;
 }
 
-button:hover {
+button:hover{
         text-decoration: underline;
 }
 
-button:active {
-        background-color: #fff;
+button:active{
+        background-color: #ffffff;
 }
 
-button:focus {
-        background-color: #fff;
+button:focus{
+        background-color: #ffffff;
+        outline: 0px;
+}
+
+input[type="search"] {
+        margin: 0px 0px 0px 3px;
+        border-radius: 0px;
+        width: 280px;
+        height: 25px;
+        background-color: transparent;
+        border: 1px solid #aaaaaa;
+}
+
+.bottom-links {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 10px;
+        text-align: left;
 }
