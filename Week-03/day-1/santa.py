@@ -2,9 +2,9 @@ direction = '((((()(()(((((((()))(((()((((()())(())()(((()((((((()((()(()(((()((
 
 j = 0
 
-for i in range(len(direction)):
-    if direction[i] = '(':
+for i in direction:
+    if str[i] = '(':
         j += 1
     else:
-        j += 1
+        j -= 1
 print(j)
