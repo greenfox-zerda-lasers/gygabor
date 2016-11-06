@@ -13,7 +13,7 @@ class Person():
         self.grades = []
 
     def greet(self):
-        print (self.first_name + self.last_name)
+        print (self.first_name + ' '+ self.last_name)
 
 class Student(Person):
 
@@ -21,11 +21,10 @@ class Student(Person):
 
     def addgrade(self, numb):
         self.grades += [numb]
-        # print(self.grades)
 
     def salute(self):
 
-        return (self.greet(),sum(self.grades) / len(self.grades))
+        return (self.greet(), sum(self.grades) / len(self.grades))
 
 joe = Student('Joey', 'Ramone')
 joe.addgrade(5)
