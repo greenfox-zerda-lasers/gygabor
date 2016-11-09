@@ -14,8 +14,8 @@ def five_most_frequent():
     repo.sort()
 
     for i in range(len(repo)):
-        while repo[i] == repo[i+1]:
-            count += 1
+        # while repo[i] == repo[i+1]:
+        #     count += 1
 
         result[i] = count
     print(result)
