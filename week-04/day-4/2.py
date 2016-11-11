@@ -8,5 +8,5 @@ def count_down(number):
     else:
         return number + count_down(number - 1)
 
-i = count_down(2)
+i = count_down(3)
 print(i)
