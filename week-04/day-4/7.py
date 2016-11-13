@@ -10,5 +10,5 @@ def changexy(text):
     else:
         return text[0] + changexy(text[1:])
 
-i = changexy('textgdfdshgx')
+i = changexy('xxxxxtetxxxxxgdfdshgxxxxx')
 print(i)

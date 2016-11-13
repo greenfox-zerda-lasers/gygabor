@@ -2,12 +2,13 @@
 # [1, 2, [3, 4], 1, [1, [2, 4]]]
 
 def add_up(numbers):
+    print(numbers)
 
-    if numbers[0] == []:
-        return numbers
+    if len(numbers) == 0:
+        return 0
+
     elif type(numbers[0]) == list:
-
-        return numbers[0,0] + add_up(numbers[0,1:])
+        return add_up(numbers[0]) + add_up(numbers[1:])
     else:
         return numbers[0] + add_up(numbers[1:])
 
