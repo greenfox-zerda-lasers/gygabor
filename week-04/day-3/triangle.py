@@ -4,22 +4,27 @@ root = Tk()
 canvas = Canvas(root, width = 600, height = 600)
 canvas.pack()
 
-def draw_line(x, y, x2, y2):
+def draw_triangle(x, y, x2, y2, x3, y3):
+    print (x, y, x2, y2, x3, y3)
+    line = canvas.create_polygon(x, y, x2, y2, x3, y3, fill = 'white', outline ='black')
 
-    line = canvas.create_line(x, y, x2, y2)
 
-
-def rec_draw(x, y, size, row):
+def rec_draw(x, y, size, piece):
     z = size * 3**0.5/2
-    p = int(size / row)
-    q = p * 3**0.5/2
-    for i in range(0, size, p):
-        draw_line(x + i*0.5, y - i * q , x + i*2, y - i * q)
-        # draw_line(x + i*0.5, y, x + p / 2, y - q)
-        # draw_line(x + p / 2, y - q, x + p, y)
+
+    if piece == 0:
+        return 0
+    else:
+        for i in range(0, piece):
+            p = x
+            p += i*size
+            draw_triangle(p, y, p + size, y, p + size / 2, y - z)
+
+        return rec_draw(x+size/2, y-z, size, piece - 1)
 
 
-rec_draw(10, 560, 560, 20)
+
+rec_draw(10, 560, 40, 10)
 
 
 root.mainloop()
