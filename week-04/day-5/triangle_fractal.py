@@ -6,11 +6,13 @@ canvas = Canvas(root, width = 800, height = 800)
 canvas.pack()
 
 def draw_triangle(x, y, size):
+    time.sleep(0.01)
+
     z = size * 3**0.5/2
     triangle = canvas.create_polygon(x, y, x+size, y, x + size / 2, y + z, fill = 'white', outline ='black')
-
+    canvas.update()
+    
 def rec_draw(x, y, size):
-    time.sleep(0.01)
     p = (size * 3**0.5/2) / 2
     if size < 3:
         return
