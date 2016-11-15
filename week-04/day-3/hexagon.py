@@ -8,7 +8,10 @@ canvas.pack()
 
 def draw_hexa(x, y, size):
     z = size * 3**0.5/2
+    time.sleep(0.01)
+
     hexagon = canvas.create_polygon(x + size/2, y, x+size*1.5, y, x+size*2, y + z, x+size*1.5, y+z*2, x + size/2, y+z*2, x, y+z, fill = 'white', outline ='black')
+    canvas.update()
 
 def rec_draw(x, y, size, row):
     z = size * 3**0.5/2
