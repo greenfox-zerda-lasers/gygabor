@@ -2,12 +2,13 @@
 # it should print "fail" if it is divided by 0
 
 def divide_ten(number):
-    # while True:
+
     try:
         return 10 / number
     except ZeroDivisionError:
-        print ( '0 is not allowed' )
+        return 'fail'
+
     except TypeError:
-        print ( 'Number please!')
+        return 'Number please!'
 
 print(divide_ten('dfs'))

@@ -10,4 +10,4 @@ def text_lines(filename):
     except FileNotFoundError:
         return 0
 
-print (text_lines('fil.txt'))
+print (text_lines('file.txt'))

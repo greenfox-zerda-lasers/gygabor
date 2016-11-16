@@ -10,4 +10,4 @@ class Person:
         if self.birth_date < 0 or self.birth_date > 2016:
             raise ValueError('Wrong date')
 
-Jozsi = Person('Jozsi', -1)
+Jozsi = Person('Jozsi', 2006)
