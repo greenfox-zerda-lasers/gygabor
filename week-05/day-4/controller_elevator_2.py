@@ -24,6 +24,7 @@ class Controller:
         self.elevator = view_elevator.Display()
         self.model = model_elevator.Elevator()
         self.input_letter = ''
+        self.new_storey = 0
         self.people_number = 0
         self.position = True
         self.people_number_check = True
@@ -33,12 +34,13 @@ class Controller:
     def input_handling(self):
 
         self.running = True
-
         while self.running:
-            os.system('cls' if os.name == 'nt' else 'clear')
 
+            if 
             self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
-            
+            self.model.elevator_storey += 1
+            self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+            self.position = self.model.position_handling(self.input_letter)
 
 
             self.elevator.display_options()
@@ -62,7 +64,7 @@ class Controller:
                     print ('Number of People can not be less than 0!')
                     input('Press Enter to continue')
             elif self.input_letter.isdigit():
-                self.position = self.model.position_handling(self.input_letter)
+                self.new_storey = int(self.input_letter)
                 if self.position is False:
                     print('Wrong number! Accepted number is between ', 0,'-', self.model.elevator_high)
                     input('Press Enter to continue')

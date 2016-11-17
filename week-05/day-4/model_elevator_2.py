@@ -12,10 +12,10 @@ class Elevator:
     def __init__(self):
         self.number_of_people = 0
         self.max_number_people = 8
-        self.elevator_storey = 0
+        self.storey = -1
+        self.old_storey = 0
         self.elevator_high = 10
         self.elevator_min = 0
-        
 
 
     def add_people(self, number):
@@ -36,5 +36,6 @@ class Elevator:
         if self.elevator_high < int(storey):
             return False
         else:
-            self.elevator_storey = storey
+            self.old_storey = self.storey
+            self.storey = storey
             return True
