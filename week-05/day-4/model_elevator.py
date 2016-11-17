@@ -1,0 +1,33 @@
+# Create an "elevator" class
+# The class should track the following things:
+#  - elevator position
+#  - elevator direction
+#  - people in the elevator
+#  - add people
+#  - remove people
+#
+# Please remeber that negative amount of people would be troubling
+
+class Elevator:
+    def __init__(self):
+        self.number_of_people = 0
+        self.max_number_people = 8
+        self.elevator_storey = 0
+        self.elevator_high = 10
+        self.elevator_min = 0
+
+
+    def add_people(self, number):
+        if number < self.max_number_people:
+            self.number_of_people += number
+
+    def remove_people(self, number):
+        if number >= 0:
+            self.number_of_people -= number
+
+    def position_handling(self, storey):
+        if self.elevator_high < int(storey):
+            return False
+        else:
+            self.elevator_storey = storey
+            return True
