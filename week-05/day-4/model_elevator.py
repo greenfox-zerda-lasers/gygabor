@@ -20,10 +20,16 @@ class Elevator:
     def add_people(self, number):
         if number < self.max_number_people:
             self.number_of_people += number
+            return True
+        else:
+            return False
 
     def remove_people(self, number):
-        if number >= 0:
+        if number >= 0 and self.number_of_people - number >= 0:
             self.number_of_people -= number
+            return True
+        else:
+            return False
 
     def position_handling(self, storey):
         if self.elevator_high < int(storey):
