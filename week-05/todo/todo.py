@@ -22,10 +22,10 @@ class Todo:
                 self.model.list_item()
                 self.view.dis_list(self.model.task_list, self.model.exist)
             elif a == ('-a', ''):
-                self.task.append(input('Give me a task:'))
+                self.task.append(args)
                 self.model.add_item(self.task)
-            elif a == '-r':
-                pass
+            elif a == ('-r', ''):
+                self.model.remove_item(args)
             elif a == '-c':
                 pass
             else:
