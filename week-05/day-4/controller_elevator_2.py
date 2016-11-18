@@ -36,12 +36,27 @@ class Controller:
         self.running = True
         while self.running:
 
-            self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+            if int(self.model.elevator_storey) < self.new_storey:
 
-            self.model.elevator_storey += 1
-            self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+                num = self.new_storey - int(self.model.elevator_storey)
+                for i in range(num):
+                    time.sleep(0.2)
+                    self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
 
-            self.position = self.model.position_handling(self.input_letter)
+                    self.model.elevator_storey += 1
+                    self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+            elif int(self.model.elevator_storey) > self.new_storey:
+                num = self.model.elevator_storey - self.new_storey
+                for i in range(num):
+                    time.sleep(0.2)
+                    self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+
+                    self.model.elevator_storey -= 1
+                    self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+            else:
+                self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+
+            # self.position = self.model.position_handling(self.input_letter)
 
 
             self.elevator.display_options()
@@ -66,6 +81,8 @@ class Controller:
                     input('Press Enter to continue')
             elif self.input_letter.isdigit():
                 self.new_storey = int(self.input_letter)
+                self.position = self.model.position_handling(self.input_letter)
+
                 if self.position is False:
                     print('Wrong number! Accepted number is between ', 0,'-', self.model.elevator_high)
                     input('Press Enter to continue')
