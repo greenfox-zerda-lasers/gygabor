@@ -1,41 +1,33 @@
-import sys, getopt
+import os.path
 
-class Item:
-    pass
+class Process:
 
     def __init__(self):
-        pass
+        self.task_list = []
+        self.exist = True
 
-    def io_handling(self):
-        try:
-            self.opts, self.args = getopt.getopt(sys.argv[1:], 'l:a:r:c')
-        except getopt.GetoptError:
-            print('err')
-            # usage()
-            # sys.exit()
+    def add_item(self, task):
+        if os.path.exists('tasks.csv') == False:
+            f = open('tasks.csv', 'w')
+            f.write(str(task))
+            f.close
+        else:
+            f = open('tasks.csv', 'a')
+            f.write(str(task))
+            f.close
 
-        for o,a in self.opts:
-            if o == '-l':
-                print(a)
-            if o == '-a':
-                print(a)
-            if o == '-r':
-                print(a)
-            if o == '-c':
-                print(a)
-            else:
-                print('err')
-                # usage()
-                # sys.exit()
-
-    def add_item(self):
-        pass
 
     def remove_item(self):
         pass
 
     def list_item(self):
-        pass
+        if os.path.exists('tasks.csv') == False:
+            self.exist = False
+        else:
+            f = open('tasks.csv', 'r')
+            self.task_list = f.read()
+            f.close()
+
 
     def doing_item(self):
         pass
@@ -51,7 +43,3 @@ class Item:
 
     def read_file(self):
         pass
-
-
-print ('Number of arguments:', len(sys.argv), 'arguments.')
-print ('Argument List:', str(sys.argv))
