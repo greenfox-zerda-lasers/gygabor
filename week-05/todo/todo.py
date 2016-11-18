@@ -1,45 +1,35 @@
-import os.path
+import sys, getopt, model_todo, view_todo
 
-class Process:
+class Todo:
+
 
     def __init__(self):
-        self.task_list = []
-        self.exist = True
+        self.model = model_todo.Process()
+        self.view = view_todo.View()
+        self.task = []
 
-    def add_item(self, task):
-        if os.path.exists('tasks.csv') == False:
-            f = open('tasks.csv', 'w')
-            f.write(str(task))
-            f.close
-        else:
-            f = open('tasks.csv', 'a')
-            f.write(str(task))
-            f.close
+        self.io_handling()
 
+    def io_handling(self):
+        try:
+            opts, args = getopt.getopt(sys.argv[1:], "larc")
+        except getopt.GetoptError as err:
+            print (str(err))
+            sys.exit(2)
 
-    def remove_item(self):
-        pass
+        for a in opts:
+            if a == ('-l', ''):
+                self.model.list_item()
+                self.view.dis_list(self.model.task_list, self.model.exist)
+            elif a == ('-a', ''):
+                self.task.append(input('Give me a task:'))
+                self.model.add_item(self.task)
+            elif a == '-r':
+                pass
+            elif a == '-c':
+                pass
+            else:
+                assert False, "unhandled option"
+                sys.exit(1)
 
-    def list_item(self):
-        if os.path.exists('tasks.csv') == False:
-            self.exist = False
-        else:
-            f = open('tasks.csv', 'r')
-            self.task_list = f.read()
-            f.close()
-
-
-    def doing_item(self):
-        pass
-
-    def review_item(self):
-        pass
-
-    def done_item(self):
-        pass
-
-    def write_file(self):
-        pass
-
-    def read_file(self):
-        pass
+user_day = Todo()
