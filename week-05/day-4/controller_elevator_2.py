@@ -36,10 +36,11 @@ class Controller:
         self.running = True
         while self.running:
 
-            if 
             self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+
             self.model.elevator_storey += 1
             self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
+
             self.position = self.model.position_handling(self.input_letter)
 
 
