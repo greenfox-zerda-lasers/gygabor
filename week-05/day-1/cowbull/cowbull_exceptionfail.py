@@ -44,15 +44,17 @@ class Cab:
                 self.user_guess()
 
     def user_guess(self):
-        self.guess_number = list(input('Give me a four digit number (press \'q\', if you want to quit+):'))
-        if 'q' in self.guess_number:
+        try:
+            self.guess_number = list(input('Give me a four digit number (press \'q\', if you want to quit+):'))
+        except 'q' in self.guess_number:
+            self.game_running = False
             self.restart()
-        elif len(self.guess_number) > 3:
+        except len(self.guess_number) > 3:
             print ('Only four digits please!')
             self.game_loop()
-        elif self.guess_number.isdigit() == False:
-            print ('Only digits please!')
+        except self.guess_number.isdigit() == False:
             self.game_loop()
+
 
         for j in range(len(self.guess_number)):
 
@@ -63,13 +65,14 @@ class Cab:
                 else:
                     self.bulls += 1
 
+
     def restart(self):
         while not self.game_running:
-            print('Do you want restart the game?' )
+            print('restart_question' )
             answer = str(input('(Y)es or (N)o?'))
-            if answer.lower() == 'n':
+            if answer.lower() == 'y':
                 self.start()
-            elif answer.lower() == 'y':
+            elif answer.lower() == 'n':
                 print( 'see_ya' )
                 self.game_running = False
                 break
