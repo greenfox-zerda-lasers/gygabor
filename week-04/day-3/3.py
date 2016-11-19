@@ -1,7 +1,7 @@
 # create a 300x300 canvas.
 # draw its diagonals in green.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

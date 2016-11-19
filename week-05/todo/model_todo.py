@@ -13,7 +13,7 @@ class Process:
         print (task)
         if os.path.exists('tasks.csv') == False:
             with open('tasks.csv', 'w', newline='') as csvfile:
-                f = csv.writer(csvfile, delimiter=',')#, quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                f = csv.writer(csvfile, delimiter=',')
                 print(f.line_num)
                 f.writerow([1, task, '0'])
                 csvfile.close()
@@ -24,7 +24,7 @@ class Process:
                     self.index = row[0] + 2
                 csvfile.close()
             with open('tasks.csv', 'a', newline='') as csvfile:
-                f = csv.writer(csvfile, delimiter=',')#, quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                f = csv.writer(csvfile, delimiter=',')
                 f.writerow([self.index, task, '0'])
 
                 csvfile.close()
@@ -57,17 +57,7 @@ class Process:
             f.close()
 
 
-    def doing_item(self):
-        pass
 
-    def review_item(self):
-        pass
 
-    def done_item(self):
-        pass
-
-    def write_file(self):
-        pass
-
-    def read_file(self):
+    def check_item(self):
         pass

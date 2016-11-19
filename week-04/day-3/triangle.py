@@ -5,7 +5,6 @@ canvas = Canvas(root, width = 600, height = 600)
 canvas.pack()
 
 def draw_triangle(x, y, x2, y2, x3, y3):
-    print (x, y, x2, y2, x3, y3)
     line = canvas.create_polygon(x, y, x2, y2, x3, y3, fill = 'white', outline ='black')
 
 

@@ -4,7 +4,7 @@
 # and draws a 50x50 square from that point.
 # draw 3 squares with that function.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

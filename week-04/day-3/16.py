@@ -6,7 +6,7 @@
 # - The stars should have random positions on the canvas
 # - The stars should have random color (some shade of grey)
 import random
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300, background = 'black')

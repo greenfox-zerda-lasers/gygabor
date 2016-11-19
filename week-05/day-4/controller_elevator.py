@@ -35,13 +35,14 @@ class Controller:
         self.running = True
 
         while self.running:
+            # drawing
             os.system('cls' if os.name == 'nt' else 'clear')
 
             self.elevator.draw_elevator(self.model.elevator_high, int(self.model.elevator_storey), self.model.number_of_people)
-            
-
 
             self.elevator.display_options()
+
+            # Input Handling
 
             self.input_letter = input()
 

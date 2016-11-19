@@ -2,7 +2,7 @@
 # draw a red horizontal line to its middle.
 # draw a green vertical line to its middle.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300, background = 'black')

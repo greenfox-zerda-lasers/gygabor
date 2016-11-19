@@ -5,7 +5,7 @@
 # connect these to get a box: [[10, 10], [290,  10], [290, 290], [10, 290]]
 # connect these: [[50, 100], [70, 70], [80, 90], [90, 90], [100, 70],
 # [120, 100], [85, 130], [50, 100]]
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

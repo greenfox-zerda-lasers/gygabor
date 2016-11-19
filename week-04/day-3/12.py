@@ -1,7 +1,7 @@
 # create a 300x300 canvas.
 # fill it with a checkerboard pattern.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

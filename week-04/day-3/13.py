@@ -5,7 +5,7 @@
 # and draws a line from that point to the center of the canvas.
 # fill the canvas with lines from the edges, every 20 px, to the center.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

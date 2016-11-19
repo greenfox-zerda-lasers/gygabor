@@ -2,7 +2,7 @@
 # create a 300x300 canvas.
 # fill it with four different size and color rectangles.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

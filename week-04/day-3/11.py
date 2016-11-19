@@ -5,7 +5,7 @@
 # create a loop that fills the canvas with rainbow colored squares.
 
 import random
-from Tkinter import *
+from tkinter import *
 root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)

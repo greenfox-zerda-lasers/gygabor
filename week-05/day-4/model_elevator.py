@@ -15,8 +15,6 @@ class Elevator:
         self.elevator_storey = 0
         self.elevator_high = 10
         self.elevator_min = 0
-        
-
 
     def add_people(self, number):
         if number < self.max_number_people:
