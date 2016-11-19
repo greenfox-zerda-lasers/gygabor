@@ -22,7 +22,7 @@ class Cab:
     def start(self):
         self.game_running = True
         while len(self.number) != 4:
-            j = random.randrange(0, 9)
+            j = random.choice('0123456789')
             if not j in self.number:
                 self.number.append(j)
 
@@ -49,10 +49,14 @@ class Cab:
 
     def user_guess(self):
         self.guess_number = list(input('Give me a four digit number:'))
+        self.cows += 0
+        self.bulls += 0
+        for j in range(len(self.guess_number)):
+            print(self.guess_number)
+            print(self.number)
+            if self.guess_number[j] in self.number:
 
-        for i in range(len(self.number)):
-            if self.guess_number[i] in self.number:
-                if self.guess_number[i] == self.number[i]:
+                if self.guess_number[j] == self.number[j]:
                     self.cows += 1
                 else:
                     self.bulls += 1
