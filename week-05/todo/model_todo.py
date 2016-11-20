@@ -31,21 +31,23 @@ class Process:
 
     def remove_item(self, index):
         # print (int(index[0]))
-        # with open('tasks.csv', 'r') as csvfile:
-        f = open('tasks.csv', 'r')
-        read = f.read()
-        print (read)
+        with open('tasks.csv', 'r') as csvfile:
+
+            self.read = csvfile.read()
+        print (self.read)
             # for row in f:
             #     if int(row[0]) == int(index[0]):
             #         self.line = row[0]
             # csvfile.close()
-        f.close()
-        with open('tasks.csv', 'a') as csvfile:
+        csvfile.close()
+        with open('tasks.csv', 'w') as csvfile:
             f = csv.writer(csvfile)
-            f2 = csv.reader(csvfile)
-            for row in enumerate(f2):
-                if row == self.line:
-                    f.writerow()
+            for row in self.read:
+                print(row)
+                if index == self.read[0]:
+                    self.read.pop(row)
+            for i in self.read:
+                f.writerow([i])
             csvfile.close()
 
     def list_item(self):
