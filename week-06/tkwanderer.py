@@ -1,23 +1,32 @@
 import model_tkwanderer, view_tkwanderer
 from tkinter import *
+import PIL
 
 class Tkwanderer:
 
     def __init__(self):
         self.view = view_tkwanderer.Display()
-        self.map = model_tkwanderer.Map()
-        self.map_read = []
+        self.area = model_tkwanderer.Area()
+        self.hero = model_tkwanderer.Hero(32, 32)
+        self.area_read = []
 
-        self.display_map()
+        self.start()
 
-    def display_map(self):
-        self.root = Tk()
-        self.canvas = Canvas(self.root, width = 800, height = 800)
-        self.canvas.pack()
+    def start(self):
+        self.display_area()
+        self.display_hero()
+        self.view.show()
 
-        self.map.read_map()
-        self.view.draw_map(self.map.game_map)
+    # draw area
+    def display_area(self):
+        self.area.read_area()
+        self.view.draw_area(self.area.game_area)
 
-        self.root.mainloop()
+    def display_hero(self):
+        self.view.draw_hero(self.hero.posX, self.hero.posY)
+
+    def game_loop(self):
+        pass
+
 
 game = Tkwanderer()
