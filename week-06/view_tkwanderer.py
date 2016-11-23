@@ -6,7 +6,7 @@ class Display:
     def __init__(self):
 
         self.root = Tk()
-        self.canvas = Canvas(self.root, width = 600, height = 600)
+        self.canvas = Canvas(self.root, width = 600, height = 800)
         self.canvas.pack()
 
         # read Area images
@@ -38,7 +38,7 @@ class Display:
 
     # draw hero
     def draw_hero(self, posX, posY):
-        self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_down)
+        self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_down, tag = 'hero')
 
     def show(self):
 	    self.root.mainloop()

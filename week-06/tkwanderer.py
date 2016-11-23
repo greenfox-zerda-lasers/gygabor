@@ -1,6 +1,5 @@
 import model_tkwanderer, view_tkwanderer
 from tkinter import *
-import PIL
 
 class Tkwanderer:
 
@@ -14,11 +13,12 @@ class Tkwanderer:
         self.start()
 
     def start(self):
-        self.view.canvas.delete("all")
+
         self.display_area()
         self.game()
 
     def game(self):
+        self.view.canvas.delete("hero")
 
         self.display_hero()
         self.input_handling()
@@ -42,18 +42,20 @@ class Tkwanderer:
 
     def move_up_hero(self, event):
         self.hero.posY -= 1
-        self.start()
+        self.game()
 
     def move_down_hero(self, event):
         self.hero.posY += 1
-        self.start()
+        self.game()
 
     def move_left_hero(self, event):
         self.hero.posX -= 1
-        self.start()
+        self.game()
 
     def move_right_hero(self, event):
         self.hero.posX += 1
-        self.start()
+        self.game()
 
 game = Tkwanderer()
+
+# game.view.root.mainloop()
