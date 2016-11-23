@@ -20,6 +20,13 @@ class Display:
         self.hero_left = ImageTk.PhotoImage(self.image_resize(Image.open('img/hero-left.png')))
         self.hero_up = ImageTk.PhotoImage(self.image_resize(Image.open('img/hero-up.png')))
 
+        # Skeleton
+        self.skeleton = ImageTk.PhotoImage(self.image_resize(Image.open('img/skel.gif')))
+
+        # Boss
+
+        self.boss = ImageTk.PhotoImage(self.image_resize(Image.open('img/boss.png')))
+
     def image_resize(self, image):
         image = image.resize((50, 50), Image.ANTIALIAS)
         return image
@@ -37,8 +44,22 @@ class Display:
                     self.canvas.create_image(posX + (j * 50), posY + (i * 50), image = self.wall)
 
     # draw hero
-    def draw_hero(self, posX, posY):
-        self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_down, tag = 'hero')
+    def draw_hero(self, posX, posY, direction):
+        if direction == 'up':
+            self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_up, tag = 'hero')
+        if direction == 'down':
+            self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_down, tag = 'hero')
+        if direction == 'left':
+            self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_left, tag = 'hero')
+        if direction == 'right':
+            self.canvas.create_image(posX, posY, anchor = NW, image = self.hero_right, tag = 'hero')
+
+    def draw_skeleton(self, posX, posY):
+
+        self.canvas.create_image(posX, posY, anchor = NW, image = self.skeleton, tag = 'skeleton')
+
+    def draw_boss(self, posX, posY):
+        self.canvas.create_image(posX, posY, anchor = NW, image = self.boss, tag = 'boss')
 
     def show(self):
 	    self.root.mainloop()

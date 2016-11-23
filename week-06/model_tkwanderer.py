@@ -14,10 +14,15 @@ class Area:
             csvfile.close()
 
 class Character:
-
     def __init__(self, posX, posY):
         self.posX = posX
         self.posY = posY
 
 class Hero(Character):
+    pass
+
+class Skeleton(Character):
+    pass
+
+class Boss(Character):
     pass
