@@ -1,4 +1,5 @@
 import csv
+from random import randint
 
 class Area:
 
@@ -22,7 +23,54 @@ class Hero(Character):
     pass
 
 class Skeleton(Character):
-    pass
+
+    def moving_position(self, skeleton, area, boss):
+        i = True
+        while i:
+            direction = randint(0, 3)
+            if direction == 0:
+                if skeleton.posX - 1 > 0 and area[skeleton.posY][skeleton.posX - 1] != '1' and (skeleton.posX - 1, skeleton.posY) != (boss.posX, boss.posY):
+                    skeleton.posX -= 1
+                    i = False
+            elif direction == 1:
+                if skeleton.posY - 1 >= 0 and area[skeleton.posY - 1][skeleton.posX] != '1' and (skeleton.posX, skeleton.posY - 1) != (boss.posX, boss.posY):
+                    skeleton.posY -= 1
+                    i = False
+            elif direction == 2:
+                if skeleton.posX + 1 < 9 and area[skeleton.posY][skeleton.posX + 1] != '1' and (skeleton.posX + 1, skeleton.posY) != (boss.posX, boss.posY):
+                    skeleton.posX += 1
+                    i = False
+            elif direction == 3:
+                if skeleton.posY + 1 < 10 and area[skeleton.posY + 1][skeleton.posX] != '1' and (skeleton.posX, skeleton.posY + 1) != (boss.posX, boss.posY):
+                    skeleton.posY += 1
+                    i = False
+        return skeleton
+
 
 class Boss(Character):
-    pass
+    def moving_position(self, boss, area, skeleton):
+        i = True
+
+        while i:
+            direction = randint(0, 3)
+            if direction == 0:
+                if boss.posX - 1 > 0 and area[boss.posY][boss.posX - 1] != '1' and (boss.posX - 1, boss.posY) not in skeleton:
+                    boss.posX -= 1
+                    i = False
+
+            elif direction == 1:
+                if boss.posY - 1 >= 0 and area[boss.posY - 1][boss.posX] != '1' and (boss.posX, boss.posY - 1) not in skeleton:
+                    boss.posY -= 1
+                    i = False
+
+            elif direction == 2:
+                if boss.posX + 1 < 9 and area[boss.posY][boss.posX + 1] != '1' and (boss.posX + 1, boss.posY) not in skeleton:
+                    boss.posX += 1
+                    i = False
+
+            elif direction == 3:
+                if boss.posY + 1 < 10 and area[boss.posY + 1][boss.posX] != '1' and (boss.posX, boss.posY + 1) not in skeleton:
+                    boss.posY += 1
+                    i = False
+                
+        return boss

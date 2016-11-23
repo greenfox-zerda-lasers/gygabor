@@ -15,7 +15,7 @@ class Tkwanderer:
         self.step = 50
         self.boss_exist = False
         self.boss = ''
-        self.move_enemy = 1
+        self.move_enemy = True
 
         self.start()
 
@@ -28,17 +28,10 @@ class Tkwanderer:
     def game(self):
         self.view.canvas.delete('hero', 'skeleton', 'boss')
         self.display_hero()
-
-        if self.move_enemy == 2:
-            self.move_skeleton()
-            self.move_boss()
-            self.move_enemy = 0
-        elif self.move_enemy == 0:
-            self.move_enemy = 1
-            
         self.display_boss()
         self.display_skeleton()
         self.input_handling()
+        self.move_skeleton()
 
         self.view.show()
 
@@ -94,17 +87,16 @@ class Tkwanderer:
         else:
             self.hero.posY -= 1
             self.direction = 'up'
-            self.move_enemy += 1
             self.game()
 
     def move_down_hero(self, event):
         if self.hero.posY + 1 > 10 or self.area.game_area[self.hero.posY + 1][self.hero.posX] == '1':
             self.direction = 'down'
             self.game()
+
         else:
             self.hero.posY += 1
             self.direction = 'down'
-            self.move_enemy += 1
             self.game()
 
     def move_left_hero(self, event):
@@ -114,7 +106,6 @@ class Tkwanderer:
         else:
             self.hero.posX -= 1
             self.direction = 'left'
-            self.move_enemy += 1
             self.game()
 
     def move_right_hero(self, event):
@@ -124,15 +115,32 @@ class Tkwanderer:
         else:
             self.hero.posX += 1
             self.direction = 'right'
-            self.move_enemy += 1
             self.game()
 
     def move_skeleton(self):
-        for i in range(len(self.skeleton)):
-            self.skeleton[i] = self.skeleton[i].moving_position(self.skeleton[i], self.area.game_area, self.boss)
+        i = len(self.skeleton)-1
+        while i >= 0:
+            direction = randint(0, 3)
+            skel = self.skeleton[i]
+            if direction == 0:
+                if skel.posX - 1 > 0 and self.area.game_area[skel.posY][skel.posX - 1] != '1' and (skel.posX - 1, skel.posY) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posX -= 1
+                    i -= 1
 
-    def move_boss(self):
-            self.boss = self.boss.moving_position(self.boss, self.area.game_area, self.skeleton)
+            elif direction == 1:
+                if skel.posY - 1 >= 0 and self.area.game_area[skel.posY - 1][skel.posX] != '1' and (skel.posX, skel.posY - 1) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posY -= 1
+                    i -= 1
+
+            elif direction == 2:
+                if skel.posX + 1 < 9 and self.area.game_area[skel.posY][skel.posX + 1] != '1' and (skel.posX + 1, skel.posY) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posX += 1
+                    i -= 1
+
+            elif direction == 3:
+                if skel.posY + 1 < 10 and self.area.game_area[skel.posY + 1][skel.posX] != '1' and (skel.posX, skel.posY + 1) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posY += 1
+                    i -= 1
 
 
 game = Tkwanderer()
