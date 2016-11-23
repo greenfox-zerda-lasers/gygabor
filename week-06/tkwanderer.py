@@ -31,6 +31,7 @@ class Tkwanderer:
         self.display_boss()
         self.display_skeleton()
         self.input_handling()
+        self.move_skeleton()
 
         self.view.show()
 
@@ -65,7 +66,6 @@ class Tkwanderer:
     # draw skeletons
     def display_skeleton(self):
         for i in self.skeleton:
-            print(i.posX, i.posY)
             self.view.draw_skeleton(i.posX * self.step, i.posY * self.step)
 
     # draw boss
@@ -93,6 +93,7 @@ class Tkwanderer:
         if self.hero.posY + 1 > 10 or self.area.game_area[self.hero.posY + 1][self.hero.posX] == '1':
             self.direction = 'down'
             self.game()
+
         else:
             self.hero.posY += 1
             self.direction = 'down'
@@ -115,5 +116,31 @@ class Tkwanderer:
             self.hero.posX += 1
             self.direction = 'right'
             self.game()
+
+    def move_skeleton(self):
+        i = len(self.skeleton)-1
+        while i >= 0:
+            direction = randint(0, 3)
+            skel = self.skeleton[i]
+            if direction == 0:
+                if skel.posX - 1 > 0 and self.area.game_area[skel.posY][skel.posX - 1] != '1' and (skel.posX - 1, skel.posY) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posX -= 1
+                    i -= 1
+
+            elif direction == 1:
+                if skel.posY - 1 >= 0 and self.area.game_area[skel.posY - 1][skel.posX] != '1' and (skel.posX, skel.posY - 1) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posY -= 1
+                    i -= 1
+
+            elif direction == 2:
+                if skel.posX + 1 < 9 and self.area.game_area[skel.posY][skel.posX + 1] != '1' and (skel.posX + 1, skel.posY) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posX += 1
+                    i -= 1
+
+            elif direction == 3:
+                if skel.posY + 1 < 10 and self.area.game_area[skel.posY + 1][skel.posX] != '1' and (skel.posX, skel.posY + 1) != (self.boss.posX, self.boss.posY):
+                    self.skeleton[i].posY += 1
+                    i -= 1
+
 
 game = Tkwanderer()
