@@ -18,7 +18,7 @@ class Tkwanderer:
         self.game()
 
     def game(self):
-        self.view.canvas.delete("hero")
+        self.view.canvas.delete('hero')
 
         self.display_hero()
         self.input_handling()
@@ -41,20 +41,32 @@ class Tkwanderer:
         self.view.root.bind('<Right>', self.move_right_hero)
 
     def move_up_hero(self, event):
-        self.hero.posY -= 1
-        self.game()
+        if self.hero.posY - 1 < 0 or self.area.game_area[self.hero.posY - 1][self.hero.posX] == '1':
+            self.game()
+        else:
+            self.hero.posY -= 1
+            self.game()
 
     def move_down_hero(self, event):
-        self.hero.posY += 1
-        self.game()
+        if self.hero.posY + 1 > 10 or self.area.game_area[self.hero.posY + 1][self.hero.posX] == '1':
+            self.game()
+        else:
+            self.hero.posY += 1
+            self.game()
 
     def move_left_hero(self, event):
-        self.hero.posX -= 1
-        self.game()
+        if self.hero.posX - 1 < 0 or self.area.game_area[self.hero.posY][self.hero.posX - 1] == '1':
+            self.game()
+        else:
+            self.hero.posX -= 1
+            self.game()
 
     def move_right_hero(self, event):
-        self.hero.posX += 1
-        self.game()
+        if self.hero.posX + 1 > 9 or self.area.game_area[self.hero.posY][self.hero.posX + 1] == '1':
+            self.game
+        else:
+            self.hero.posX += 1
+            self.game()
 
 game = Tkwanderer()
 
