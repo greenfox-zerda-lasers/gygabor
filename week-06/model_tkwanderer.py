@@ -15,14 +15,32 @@ class Area:
             csvfile.close()
 
 class Character:
-    def __init__(self, posX, posY):
+    def __init__(self, posX, posY, level, key):
         self.posX = posX
         self.posY = posY
+        self.health = 0
+        self.defend = 0
+        self.strike = 0
+        self.key =key
+        self.level = level
+
+    # !!!!MOVE FUNCTION WILL BE HERE!!!!
 
 class Hero(Character):
-    pass
+    def __init__(self, posX, posY, level, key):
+        super(Hero, self).__init__(posX, posY, level, key)
+
+        self.health = 20 + 3 * randint(1, 6)
+        self.defend = 2 * randint(1, 6)
+        self.strike = 5 + randint(1, 6)
 
 class Skeleton(Character):
+    def __init__(self,posX, posY, level, key):
+        super(Skeleton, self).__init__(posX, posY, level, key)
+
+        self.health = 20 + 3 * randint(1, 6)
+        self.defend = 2 * randint(1, 6)
+        self.strike = 5 + randint(1, 6)
 
     def moving_position(self, skeleton, area, boss):
         i = True
@@ -48,6 +66,13 @@ class Skeleton(Character):
 
 
 class Boss(Character):
+    def __init__(self, posX, posY, level, key):
+        super(Boss, self).__init__(posX, posY, level, key)
+
+        self.health = 20 + 3 * randint(1, 6)
+        self.defend = 2 * randint(1, 6)
+        self.strike = 5 + randint(1, 6)
+
     def moving_position(self, boss, area, skeleton):
         i = True
 
@@ -72,5 +97,5 @@ class Boss(Character):
                 if boss.posY + 1 < 10 and area[boss.posY + 1][boss.posX] != '1' and (boss.posX, boss.posY + 1) not in skeleton:
                     boss.posY += 1
                     i = False
-                
+
         return boss

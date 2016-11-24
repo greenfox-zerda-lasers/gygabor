@@ -1,13 +1,14 @@
 import model_tkwanderer, view_tkwanderer
-from tkinter import *
 from random import randint
 
 class Tkwanderer:
 
     def __init__(self):
+        self.level = 1
+        self.key = 0
         self.view = view_tkwanderer.Display()
         self.area = model_tkwanderer.Area()
-        self.hero = model_tkwanderer.Hero(0, 0)
+        self.hero = model_tkwanderer.Hero(0, 0, self.level, self.key)
         self.area_read = []
         self.direction = 'down'
         self.skeleton_number = 3
@@ -26,7 +27,7 @@ class Tkwanderer:
         self.game()
 
     def game(self):
-        self.view.canvas.delete('hero', 'skeleton', 'boss')
+        self.view.canvas.delete('hero', 'skeleton', 'boss', 'hero_stat', 'skeleton_stat', 'boss_stat')
         self.display_hero()
 
         if self.move_enemy == 2:
@@ -35,9 +36,10 @@ class Tkwanderer:
             self.move_enemy = 0
         elif self.move_enemy == 0:
             self.move_enemy = 1
-            
+
         self.display_boss()
         self.display_skeleton()
+        self.display_stats()
         self.input_handling()
 
         self.view.show()
@@ -48,7 +50,7 @@ class Tkwanderer:
             posX = randint(0, 9)
             posY = randint(0, 10)
             if self.area.game_area[posY][posX] == '0' and (posX, posY) != (self.hero.posX, self.hero.posY):
-                self.boss = model_tkwanderer.Boss(posX, posY)
+                self.boss = model_tkwanderer.Boss(posX, posY, self.level, self.key)
                 self.boss_exist = True
 
     # instantiate skeleton
@@ -57,7 +59,7 @@ class Tkwanderer:
             posX = randint(0, 9)
             posY = randint(0, 10)
             if self.area.game_area[posY][posX] == '0' and (posX, posY) != (self.hero.posX, self.hero.posY) and (posX, posY) != (self.boss.posX, self.boss.posY):
-                i = model_tkwanderer.Skeleton(posX, posY)
+                i = model_tkwanderer.Skeleton(posX, posY, self.level, self.key)
                 self.skeleton.append(i)
                 self.skeleton_number -= 1
 
@@ -78,6 +80,10 @@ class Tkwanderer:
     # draw boss
     def display_boss(self):
         self.view.draw_boss(self.boss.posX * self.step, self.boss.posY * self.step)
+
+    # draw stats
+    def display_stats(self):
+        self.view.draw_stats(self.hero, self.skeleton, self.boss)
 
     # input handling
     def input_handling(self):
@@ -133,6 +139,5 @@ class Tkwanderer:
 
     def move_boss(self):
             self.boss = self.boss.moving_position(self.boss, self.area.game_area, self.skeleton)
-
 
 game = Tkwanderer()
