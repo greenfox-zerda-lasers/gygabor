@@ -1,4 +1,4 @@
-import model_tkwanderer, view_tkwanderer
+import model_tkwanderer_old2, view_tkwanderer_old2
 from random import randint
 
 class Tkwanderer:
@@ -29,7 +29,17 @@ class Tkwanderer:
 
     def game(self):
         self.view.canvas.delete('hero', 'skeleton', 'boss', 'hero_stat', 'skeleton_stat', 'boss_stat')
-        self.display_character()
+        self.display_hero()
+
+        if self.move_enemy == 2:
+            self.move_skeleton()
+            self.move_boss()
+            self.move_enemy = 0
+        elif self.move_enemy == 0:
+            self.move_enemy = 1
+
+        self.display_boss()
+        self.display_skeleton()
         self.display_stats()
         self.input_handling()
         self.battle_process()
@@ -64,23 +74,18 @@ class Tkwanderer:
         self.area.read_area()
         self.view.draw_area(self.area.game_area)
 
-    def display_character(self):
-
+    # draw hero
+    def display_hero(self):
         self.view.draw_hero(self.hero.posX * self.step, self.hero.posY * self.step, self.direction)
-        print(self.move_enemy)
-        if self.move_enemy == 2:
-            print(self.move_enemy)
-            self.move_skeleton()
-            if self.boss_exist == True:
-                self.move_boss()
-            self.move_enemy = 0
-        elif self.move_enemy == 0:
-            self.move_enemy = 1
 
+    # draw skeletons
+    def display_skeleton(self):
         for i in self.skeleton:
             self.view.draw_skeleton(i.posX * self.step, i.posY * self.step)
-        if self.boss_exist == True:
-            self.view.draw_boss(self.boss.posX * self.step, self.boss.posY * self.step)
+
+    # draw boss
+    def display_boss(self):
+        self.view.draw_boss(self.boss.posX * self.step, self.boss.posY * self.step)
 
     # draw stats
     def display_stats(self):
@@ -136,10 +141,10 @@ class Tkwanderer:
 
     def move_skeleton(self):
         for i in range(len(self.skeleton)):
-            self.skeleton[i] = self.skeleton[i].move_character(self.skeleton[i], self.area.game_area)
+            self.skeleton[i] = self.skeleton[i].moving_position(self.skeleton[i], self.area.game_area, self.boss)
 
     def move_boss(self):
-            self.boss = self.boss.move_character(self.boss, self.area.game_area)
+            self.boss = self.boss.moving_position(self.boss, self.area.game_area, self.skeleton)
 
     def battle_process(self):
         battle_list = []
@@ -151,7 +156,6 @@ class Tkwanderer:
                 self.hero = battle_list[0]
                 self.skeleton[i] = battle_list[1]
                 self.level_up()
-                break
         if (self.hero.posX, self.hero.posY) == (self.boss.posX, self.boss.posY):
             battle_list.append(self.boss)
             battle_list = self.battle.battle_handling(battle_list)
@@ -167,10 +171,10 @@ class Tkwanderer:
         for i in range(len(self.skeleton)):
             if self.skeleton[i].health <= 0:
                 self.skeleton.pop(i)
-                break
         if self.boss.health <= 0:
-            del self.boss
-            self.boss_exist = False
+
+
+
 
     def game_end(self):
         print('game over')
