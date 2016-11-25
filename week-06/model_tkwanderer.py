@@ -24,6 +24,21 @@ class Character:
         self.key = key
         self.level = level
 
+    def start_pos(self, area, hero):
+        self.hero = hero
+        self.area = area
+        i = False
+        position = []
+        while i == False:
+            posX = randint(0, 9)
+            posY = randint(0, 10)
+            if self.area[posY][posX] == '0' and (posX, posY) != (self.hero.posX, self.hero.posY):
+                i = True
+        position.append(posX)
+        position.append(posY)
+        print(position)
+        return position
+
     def move_character(self, character, area):
         i = True
         while i:
@@ -81,13 +96,13 @@ class Boss(Character):
 class Battle:
 
     def battle_handling(self, fighters_list):
-        hero = fighters_list[0]
-        enemy = fighters_list[1]
-        hero_strike = hero.strike + 2 * randint(1, 6)
-        enemy_strike = enemy.strike + 2 * randint(1, 6)
-        while hero.health > 0 and enemy.health > 0:
-            enemy.health -= hero_strike - enemy.defend
-            hero.health -= enemy_strike - hero.defend
-            hero.key = enemy.key
-        fighters_list = [hero, enemy]
+        self.hero = fighters_list[0]
+        self.enemy = fighters_list[1]
+        self.hero_strike = self.hero.strike + 2 * randint(1, 6)
+        self.enemy_strike = self.enemy.strike + 2 * randint(1, 6)
+        while self.hero.health > 0 and self.enemy.health > 0:
+            self.enemy.health -= self.hero_strike - self.enemy.defend
+            self.hero.health -= self.enemy_strike - self.hero.defend
+            self.hero.key = self.enemy.key
+        fighters_list = [self.hero, self.enemy]
         return fighters_list
