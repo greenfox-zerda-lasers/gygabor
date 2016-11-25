@@ -16,6 +16,7 @@ class Tkwanderer:
         self.skeleton = []
         self.step = 50
         self.boss = ''
+        self.boss_exist = True
         self.move_enemy = 1
 
         self.start()
@@ -27,7 +28,7 @@ class Tkwanderer:
         self.game()
 
     def game(self):
-        self.view.canvas.delete('hero', 'skeleton', 'boss', 'hero_stat', 'skeleton_stat', 'boss_stat')
+        self.view.canvas.delete('hero', 'skeleton', 'boss', 'stat', 'skeleton_stat')
         self.display_character()
         self.display_stats()
         self.input_handling()
@@ -37,20 +38,16 @@ class Tkwanderer:
 
     # instantiate boss
     def boss_instantiate(self):
-
         position = self.hero.start_pos(self.area.game_area, self.hero)
         self.boss = model_tkwanderer.Boss(position[0], position[1], self.level, self.key)
 
     # instantiate skeleton
     def skeleton_instantiate(self):
         for i in range(self.skeleton_number):
-            if self.skeleton_number == 1:
-                self.key = 1
-            else:
-                self.key = 0
             position = self.hero.start_pos(self.area.game_area, self.hero)
             j = model_tkwanderer.Skeleton(position[0], position[1], self.level, self.key)
             self.skeleton.append(j)
+            self.skeleton[0].key = 1
 
     # draw area
     def display_area(self):
@@ -58,26 +55,29 @@ class Tkwanderer:
         self.view.draw_area(self.area.game_area)
 
     def display_character(self):
-
         self.view.draw_hero(self.hero.posX * self.step, self.hero.posY * self.step, self.direction)
 
         if self.move_enemy == 2:
             print(self.move_enemy)
             self.move_skeleton()
-            self.move_boss()
+            if self.boss_exist == True:
+                self.move_boss()
             self.move_enemy = 0
         elif self.move_enemy == 0:
             self.move_enemy = 1
 
         for i in self.skeleton:
             self.view.draw_skeleton(i.posX * self.step, i.posY * self.step)
-
-        self.view.draw_boss(self.boss.posX * self.step, self.boss.posY * self.step)
+        if self.boss_exist == True:
+            self.view.draw_boss(self.boss.posX * self.step, self.boss.posY * self.step)
 
     # draw stats
     def display_stats(self):
-
-        self.view.draw_stats(self.hero, self.skeleton, self.boss)
+        if self.boss_exist == True:
+            characters = [self.hero, self.boss]
+        else:
+            characters = [self.hero]
+        self.view.draw_stats(characters, self.skeleton)
 
     # input handling
     def input_handling(self):
@@ -145,7 +145,7 @@ class Tkwanderer:
                 self.skeleton[i] = battle_list[1]
                 self.level_up()
                 break
-        if (self.hero.posX, self.hero.posY) == (self.boss.posX, self.boss.posY):
+        if self.boss_exist == True and (self.hero.posX, self.hero.posY) == (self.boss.posX, self.boss.posY):
             battle_list.append(self.boss)
             battle_list = self.battle.battle_handling(battle_list)
             self.hero = battle_list[0]

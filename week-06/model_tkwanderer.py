@@ -36,7 +36,6 @@ class Character:
                 i = True
         position.append(posX)
         position.append(posY)
-        print(position)
         return position
 
     def move_character(self, character, area):

@@ -33,7 +33,6 @@ class Display:
 
     # draw area
     def draw_area(self, area):
-
         posX = 25
         posY = 25
         for i in range(len(area)):
@@ -56,22 +55,23 @@ class Display:
 
     # draw skeleton
     def draw_skeleton(self, posX, posY):
-
         self.canvas.create_image(posX, posY, anchor = NW, image = self.skeleton, tag = 'skeleton')
 
     # draw boss
     def draw_boss(self, posX, posY):
         self.canvas.create_image(posX, posY, anchor = NW, image = self.boss, tag = 'boss')
 
-    def draw_stats(self, hero, skeleton, boss):
-        hero_text = 'Hero (Level ' + str(hero.level) + ') HP: ' + str(hero.health) +' DP: ' +str(hero.defend) + ' SP: ' + str(hero.strike)
-        boss_text = 'Boss (Level ' + str(boss.level) + ') HP: ' + str(boss.health) +' DP: ' +str(boss.defend) + ' SP: ' + str(boss.strike)
+    def draw_stats(self, characters, skeleton):
+        for i in range(len(characters)):
+            if i == 0:
+                text = 'Hero (Level ' + str(characters[i].level) + ') HP: ' + str(characters[i].health) +' DP: ' +str(characters[i].defend) + ' SP: ' + str(characters[i].strike)
+            elif i == 1:
+                text = 'Boss (Level ' + str(characters[i].level) + ') HP: ' + str(characters[i].health) +' DP: ' +str(characters[i].defend) + ' SP: ' + str(characters[i].strike)
+            self.canvas.create_text(10, 570 + i * 20, anchor = NW, text = text, tag = 'stat')
 
-        self.canvas.create_text(10, 570, anchor = NW, text = hero_text, tag = 'hero_stat')
-        self.canvas.create_text(10, 590, anchor = NW, text = boss_text, tag = 'boss_stat')
         for i in range(len(skeleton)):
             skeleton_text = 'Skeleton '+ str(i+ 1) +' (Level ' + str(skeleton[i].level) + ') HP: ' + str(skeleton[i].health) +' DP: ' + str(skeleton[i].defend) + ' SP: ' + str(skeleton[i].strike)
-            self.canvas.create_text(10, 610 + i * 20 , anchor = NW, text = skeleton_text, tag = 'skeleton_stat')
+            self.canvas.create_text(10, 610 + i * 20, anchor = NW, text = skeleton_text, tag = 'skeleton_stat')
     # mainloop
     def show(self):
 	    self.root.mainloop()
