@@ -10,7 +10,6 @@ def draw_triangle(x, y, x2, y2, x3, y3):
 
 def rec_draw(x, y, size, piece):
     z = size * 3**0.5/2
-
     if piece == 0:
         return 0
     else:

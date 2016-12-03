@@ -21,27 +21,36 @@ class Tkwanderer:
         self.view = view_tkwanderer.Display()
         self.characters = [model_tkwanderer.Hero()]
         self.characters.append(model_tkwanderer.Boss(self.characters, self.area))
+        self.game_running = False
 
         self.start()
 
     def start(self):
         self.display_area()
         self.skeleton_instantiate()
+        self.game_running = True
 
         self.game()
+
+
+    def game(self):
+
+        self.view.canvas.delete('character')
+                #     self.display_stats()
+
+                    #     self.battle_process()
+        self.display()
+        self.input_handling()
+
+                # self.display_stats()
+
+        self.view.show()
+
 
     def skeleton_instantiate(self):
         for i in range(0, 3):
             skel = model_tkwanderer.Skeleton(self.characters, self.area)
             self.characters.append(skel)
-
-    def game(self):
-        self.view.canvas.delete('character')
-    #     self.display_stats()
-    #     self.input_handling()
-    #     self.battle_process()
-        self.display()
-        self.view.show()
     #
     # # instantiate boss
     # def boss_instantiate(self):
@@ -89,12 +98,25 @@ class Tkwanderer:
     #     self.view.draw_stats(characters, self.skeleton)
     #
     # # input handling
-    # def input_handling(self):
-    #     self.view.root.bind('<Up>', self.move_up_hero)
-    #     self.view.root.bind('<Down>', self.move_down_hero)
-    #     self.view.root.bind('<Left>', self.move_left_hero)
-    #     self.view.root.bind('<Right>', self.move_right_hero)
-    #
+    def input_handling(self):
+        self.view.root.bind('<Up>', self.move_hero_up)
+        self.view.root.bind('<Down>', self.move_hero_down)
+        self.view.root.bind('<Left>', self.move_hero_left)
+        self.view.root.bind('<Right>', self.move_hero_right)
+
+    def move_hero_up(self, event):
+        self.characters[0].move_hero('up', self.characters, self.area)
+        self.game()
+    def move_hero_down(self, event):
+
+        self.characters[0].move_hero('down', self.characters, self.area)
+        self.game()
+    def move_hero_left(self, event):
+        self.characters[0].move_hero('left', self.characters, self.area)
+        self.game()
+    def move_hero_right(self, event):
+        self.characters[0].move_hero('right', self.characters, self.area)
+        self.game()
     # # moving hero
     # def move_up_hero(self, event):
     #     if self.hero.posY - 1 < 0 or self.area.game_area[self.hero.posY - 1][self.hero.posX] == '1':

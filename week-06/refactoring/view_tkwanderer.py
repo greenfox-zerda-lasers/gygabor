@@ -43,9 +43,20 @@ class Display:
     # draw characters
 
     def display(self, character_list):
-        for i in character_list:
-            print(i.posX, i.posY)
-            self.canvas.create_image(i.posX * 50, i.posY * 50, anchor = NW, image = self.hero_up, tag = 'character')
+        for i in range(len(character_list)):
+            if i == 0:
+                if character_list[i].direction == 'up':
+                    self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.hero_up, tag = 'character')
+                elif character_list[i].direction == 'down':
+                    self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.hero_down, tag = 'character')
+                elif character_list[i].direction == 'left':
+                    self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.hero_left, tag = 'character')
+                elif character_list[i].direction == 'right':
+                    self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.hero_right, tag = 'character')
+            elif i == 1:
+                self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.boss, tag = 'character')
+            else:
+                self.canvas.create_image(character_list[i].position[0] * 50, character_list[i].position[1]* 50, anchor = NW, image = self.skeleton, tag = 'character')
 
     # def draw_hero(self, posX, posY, direction):
     #     if direction == 'up':

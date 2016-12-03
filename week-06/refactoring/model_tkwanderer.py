@@ -17,57 +17,95 @@ class Area:
 
 class Character:
     def __init__(self):
-        self.posX = 0
-        self.posY = 0
+        self.position = [0, 0]
+        self.temp_pos = []
         self.health = 0
         self.defend = 0
         self.strike = 0
         self.key = 0
         self.level = 1
+        self.direction = ''
 
-    def pos(self, character_list, area):
+    def pos(self, character_list, area, temp_pos):
         self.character_list = character_list
         self.area = area
         i = False
-        position = []
         while i == False:
-            posX = randint(0, 9)
-            posY = randint(0, 10)
-            if self.area.game_area[posY][posX] == '0' and (posX, posY) != (0, 0) and (posX, posY) != (self.character_list[i - 1].posX, self.character_list[i - 1].posY):
-                    i = True
-        position.append(posX)
-        position.append(posY)
-        return position
+            self.step()
+            i = self.step_check()
 
+    def step(self):
+        if self.direction == '':
+            self.position[0] = randint(0, 9)
+            self.position[1] = randint(0, 10)
+        elif self.direction == 'down':
+            self.position[1] += 1
+        elif self.direction == 'up':
+            self.position[1] -= 1
+        elif self.direction == 'left':
+            self.position[0] -= 1
+        elif self.direction == 'right':
+            self.position[0] += 1
 
+    def step_check(self):
+        if self.direction == '':
+            if self.area.game_area[self.position[1]][self.position[0]] == '0':
+                for i in self.character_list:
+                    if (self.position[0], self.position[1]) != (i.position[0], i.position[1]):
+                        return True
+            else:
+                return False
+        else:
+            if self.area.game_area[self.position[1]][self.position[0]] == '1':
+                self.position = temp_pos
+                return True
+            elif self.position[1] > 10:
+                self.position = temp_pos
+                return True
+            elif self.position[1] < 0:
+                self.position = temp_pos
+                return True
+            elif self.position[0] < 0:
+                self.position = temp_pos
+                return True
+            elif self.position[0] > 9:
+                self.position = temp_pos
+                return True
+            else:
+                for i in self.character_list:
+                    if (self.position[0], self.position[1]) == (i.position[0], i.position[1]):
+                        self.battle()
+                return True
+
+    def battle(self):
+        pass
 class Hero(Character):
     def __init__(self):
         super(Hero, self).__init__()
         self.health = 20 + 3 * randint(1, 6)
         self.defend = 2 * randint(1, 6)
         self.strike = 5 + randint(1, 6)
+        self.direction = 'down'
+
+    def move_hero(self, direction, character_list, area):
+        self.direction = direction
+        self.pos(character_list, area)
 
 class Boss(Character):
     def __init__(self, character_list, area):
         super(Boss, self).__init__()
         self.character_list = character_list
-        self.health = 2 * randint(1, 6)
-        self.defend = randint(1, 6)
-        self.strike = randint(1, 6)
-        position = self.pos(character_list, area)
-        self.posX = position[0]
-        self.posY = position[1]
-
+        self.health = (2 * self.level * randint(1, 6)) + randint(1, 6)
+        self.defend = (self.level // 2 * randint(1, 6)) + randint(1, 6) // 2
+        self.strike = self.level * randint(1, 6) + self.level
+        self.pos(character_list, area)
 class Skeleton(Character):
     def __init__(self, character_list, area):
         super(Skeleton, self).__init__()
-        self.health = 2 * randint(1, 6)
-        self.defend = randint(1, 6)
-        self.strike = randint(1, 6)
-        position = self.pos(character_list, area)
-        self.posX = position[0]
-        self.posY = position[1]
-
+        self.health = 2 * self.level * randint(1, 6)
+        self.defend = self.level // 2 * randint(1, 6)
+        self.strike = self.level * randint(1, 6)
+        self.pos(character_list, area)
 #     def boss_kill(self):
 #         del self
 #
