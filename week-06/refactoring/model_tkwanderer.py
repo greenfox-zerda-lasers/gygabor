@@ -1,5 +1,5 @@
 import csv
-from random import randint
+from random import randint, choice
 
 class Area:
 
@@ -26,13 +26,13 @@ class Character:
         self.level = 1
         self.direction = ''
 
-    def pos(self, character_list, area, temp_pos):
+    def pos(self, character_list, area):
         self.character_list = character_list
         self.area = area
-        i = False
-        while i == False:
+        self.check_position = False
+        while self.check_position == False:
             self.step()
-            i = self.step_check()
+            self.check_position = self.step_check()
 
     def step(self):
         if self.direction == '':
@@ -50,32 +50,32 @@ class Character:
     def step_check(self):
         if self.direction == '':
             if self.area.game_area[self.position[1]][self.position[0]] == '0':
-                for i in self.character_list:
-                    if (self.position[0], self.position[1]) != (i.position[0], i.position[1]):
+                for character in self.character_list:
+                    if (self.position[0], self.position[1]) != (character.position[0], character.position[1]):
                         return True
             else:
                 return False
-        else:
-            if self.area.game_area[self.position[1]][self.position[0]] == '1':
-                self.position = temp_pos
+        elif self.direction == 'down':
+            if self.position[1] > 10 or self.area.game_area[self.position[1]][self.position[0]] == '1':
+                self.position[1] -= 1
                 return True
-            elif self.position[1] > 10:
-                self.position = temp_pos
+        elif self.direction == 'up':
+            if self.position[1] < 0 or self.area.game_area[self.position[1]][self.position[0]] == '1':
+                self.position[1] += 1
                 return True
-            elif self.position[1] < 0:
-                self.position = temp_pos
+        elif self.direction == 'left':
+            if self.position[0] < 0 or self.area.game_area[self.position[1]][self.position[0]] == '1':
+                self.position[0] += 1
                 return True
-            elif self.position[0] < 0:
-                self.position = temp_pos
-                return True
-            elif self.position[0] > 9:
-                self.position = temp_pos
-                return True
-            else:
-                for i in self.character_list:
-                    if (self.position[0], self.position[1]) == (i.position[0], i.position[1]):
-                        self.battle()
-                return True
+        elif self.direction == 'right':
+            if self.position[0] > 9 or self.area.game_area[self.position[1]][self.position[0]] == '1':
+                self.position[0] -= 1
+
+            # else:
+            #     for i in self.character_list:
+            #         if (self.position[0], self.position[1]) == (i.position[0], i.position[1]):
+            #             self.battle()
+            #     return True
 
     def battle(self):
         pass
@@ -94,11 +94,18 @@ class Hero(Character):
 class Boss(Character):
     def __init__(self, character_list, area):
         super(Boss, self).__init__()
+        self.area = area
         self.character_list = character_list
         self.health = (2 * self.level * randint(1, 6)) + randint(1, 6)
         self.defend = (self.level // 2 * randint(1, 6)) + randint(1, 6) // 2
         self.strike = self.level * randint(1, 6) + self.level
-        self.pos(character_list, area)
+        self.pos(character_list, self.area)
+
+    def move_boss(self, character_list):
+        self.direction = choice('up down left right'.split())
+        self.pos(character_list, self.area)
+        self.step_count = 0
+
 class Skeleton(Character):
     def __init__(self, character_list, area):
         super(Skeleton, self).__init__()

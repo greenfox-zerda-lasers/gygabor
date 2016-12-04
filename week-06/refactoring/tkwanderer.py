@@ -16,19 +16,17 @@ class Tkwanderer:
         # self.step = 50
         # self.boss = ''
         # self.boss_exist = True
-        # self.move_enemy = 1
         self.area = model_tkwanderer.Area()
         self.view = view_tkwanderer.Display()
         self.characters = [model_tkwanderer.Hero()]
         self.characters.append(model_tkwanderer.Boss(self.characters, self.area))
-        self.game_running = False
+        self.step_count = 1
 
         self.start()
 
     def start(self):
         self.display_area()
         self.skeleton_instantiate()
-        self.game_running = True
 
         self.game()
 
@@ -39,6 +37,12 @@ class Tkwanderer:
                 #     self.display_stats()
 
                     #     self.battle_process()
+        print(self.step_count)
+        if self.step_count == 2:
+            self.step_count = 0
+            self.characters[1].move_boss(self.characters)
+
+
         self.display()
         self.input_handling()
 
@@ -99,6 +103,7 @@ class Tkwanderer:
     #
     # # input handling
     def input_handling(self):
+        self.step_count += 1
         self.view.root.bind('<Up>', self.move_hero_up)
         self.view.root.bind('<Down>', self.move_hero_down)
         self.view.root.bind('<Left>', self.move_hero_left)
@@ -108,7 +113,6 @@ class Tkwanderer:
         self.characters[0].move_hero('up', self.characters, self.area)
         self.game()
     def move_hero_down(self, event):
-
         self.characters[0].move_hero('down', self.characters, self.area)
         self.game()
     def move_hero_left(self, event):
