@@ -6,6 +6,4 @@
 function apply(funct){
   funct('apply');
 }
-
-
 apply(console.log); // should log apple
