@@ -11,4 +11,4 @@ function each(arr, funct){
   });
 }
 
-each(elements, console.log);
+each(elements, console.log);  
