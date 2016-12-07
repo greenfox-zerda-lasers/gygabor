@@ -7,8 +7,8 @@ var elements = [1, 2, 3]
 
 function each(arr, funct){
   arr.forEach(function(element, index, array){
-    funct(element, array)
+    funct(element, array);
   });
 }
 
-each(elements, console.log)
+each(elements, console.log);
