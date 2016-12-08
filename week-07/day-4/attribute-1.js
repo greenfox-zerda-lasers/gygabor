@@ -14,7 +14,6 @@ var secondButton = document.querySelector('.this-one');
 secondButton.disabled = true;
 
 // Replace its text with 'Don't click me!'.
-
 var buttons = document.querySelectorAll('button');
 if (buttons){
   buttons.forEach(function(butt){
