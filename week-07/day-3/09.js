@@ -18,4 +18,4 @@ function countLetter(string){
   return count
 }
 
-console.log(countLetter('apple'));
+console.log(countLetter('iii'));
