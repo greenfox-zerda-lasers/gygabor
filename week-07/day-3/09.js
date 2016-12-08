@@ -15,7 +15,7 @@ function countLetter(string){
         count[character] = 1;
       }
   }
-  return count
+  return count;
 }
 
-console.log(countLetter('iii'));
+console.log(countLetter('apple'));
