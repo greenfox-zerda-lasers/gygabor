@@ -14,5 +14,6 @@ var stringMethods = {
   }
 }
 
+
 console.log(typeof stringMethods.float2string(12.23));
 console.log(typeof stringMethods.string2float('12.23'));
