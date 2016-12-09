@@ -5,7 +5,7 @@ var navigationButtons = document.querySelectorAll('.navbutton');
 
 iconButton.forEach(function(element){
   element.addEventListener('click', function(){
-    slide(this.dataset.imageId);
+    displayImage(this.dataset.imageId);
   });
 });
 
@@ -22,7 +22,7 @@ navigationButtons.forEach(function(element){
     } else if (nextImageNumber > 4){
       nextImageNumber = 0;
     }
-    slide(nextImageNumber);
+    displayImage(nextImageNumber);
   });
 });
 
@@ -36,10 +36,10 @@ function navButtonImage(){
 
 navButtonImage()
 
-function slide(imageNumber){
+function displayImage(imageNumber){
     urlToDisplay = 'url("img/img' + imageNumber + '.jpg")';
     container.style.backgroundImage = urlToDisplay;
     currentImageNumber = imageNumber;
 }
 
-slide(currentImageNumber);
+displayImage(currentImageNumber);

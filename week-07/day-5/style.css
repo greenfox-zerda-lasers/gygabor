@@ -6,8 +6,8 @@ body {
 }
 
 section {
-      width: 600px;
-      height:400px;
+      width: 700px;
+      height:450px;
       position: relative;
       overflow: hidden;
       background-image: url("");
@@ -18,7 +18,7 @@ section {
 .navbutton {
       box-sizing: border-box;
       width: 100px;
-      height: 400px;
+      height: 450px;
       position: absolute;
       background-color: Transparent;
       border: none;
@@ -32,7 +32,7 @@ section {
 }
 
 .right {
-      left: 500px;
+      left: 600px;
       top: 0px;
       background-image: url("move-to-right.svg");
 }
