@@ -15,18 +15,6 @@ section {
 
 }
 
-.image-list{
-      display: flex;
-      overflow: hidden;
-      padding: 0px;
-      margin: 0px;
-}
-
-.image {
-      height: 400px;
-      width: auto;
-}
-
 .navbutton {
       box-sizing: border-box;
       width: 100px;
