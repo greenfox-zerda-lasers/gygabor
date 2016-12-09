@@ -1,0 +1,52 @@
+body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+}
+
+section {
+      width: 600px;
+      height:400px;
+      position: relative;
+}
+
+.navbutton {
+      display: flex;
+      justify-content: center;
+      width: 100px;
+      height: 400px;
+      position: absolute;
+      background-color: Transparent;
+      border: none;
+      cursor:pointer;
+}
+
+.left {
+      left: 0px;
+      top: 0px;
+}
+
+.right {
+      left: 500px;
+      top: 0px;
+}
+
+.arrow {
+      width: 30px;
+      fill: #94d31b;
+      cursor:pointer;
+}
+/*section:before {
+        content: url(../img/edit-icon.png);
+        position:absolute;
+        left: 510px;
+        top: 160px;
+}*/
+
+img {
+      width: 600px;
+      height:400px;
+      position: absolute;
+}
