@@ -1,12 +1,30 @@
 var currentImageNumber = 0;
 var iconButton = document.querySelectorAll('.icon-button');
 var container = document.querySelector('.container');
-var navigationButtons = document.querySelector('.bottom-buttons');
+var navigationButtons = document.querySelectorAll('.navbutton');
 
-navigationButtons.addEventListener('click', function(e){
-  console.log(this.dataset.imageId);
+iconButton.forEach(function(element){
+  element.addEventListener('click', function(){
+    slide(this.dataset.imageId);
+  });
 });
 
+navigationButtons.forEach(function(element){
+  element.addEventListener('click', function(){
+    var nextImageNumber = ''
+    if (this.dataset.imageId === '-1'){
+      nextImageNumber = parseInt(currentImageNumber) - 1
+    } else {
+      nextImageNumber = parseInt(currentImageNumber) + 1
+    }
+    if (nextImageNumber < 0){
+      nextImageNumber = 4;
+    } else if (nextImageNumber > 4){
+      nextImageNumber = 0;
+    }
+    slide(nextImageNumber);
+  });
+});
 
 
 function navButtonImage(){
@@ -20,9 +38,8 @@ navButtonImage()
 
 function slide(imageNumber){
     urlToDisplay = 'url("img/img' + imageNumber + '.jpg")';
-    console.log(urlToDisplay)
     container.style.backgroundImage = urlToDisplay;
-
+    currentImageNumber = imageNumber;
 }
 
-slide(currentImageNumber)
+slide(currentImageNumber);

@@ -29,8 +29,6 @@ section {
 
 .navbutton {
       box-sizing: border-box;
-      /*display: flex;
-      justify-content: center;*/
       width: 100px;
       height: 400px;
       position: absolute;
@@ -42,22 +40,17 @@ section {
 .left {
       left: 0px;
       top: 0px;
+      background-image: url("move-to-left.svg");
 }
 
 .right {
       left: 500px;
       top: 0px;
+      background-image: url("move-to-right.svg");
 }
 
 .arrow {
       width: 30px;
-      fill: #94d31b;
-      opacity: 0;
-      background-size: 100px 400px;
-}
-
-.arrow:hover {
-      opacity: 1;
 }
 
 .navbutton:hover {
