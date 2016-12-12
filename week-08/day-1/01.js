@@ -14,3 +14,6 @@ Animals.prototype.say = function() {
 
 var frog = new Animals('Brek');
 frog.say();
+
+var sheep = new Animals('BEEEEEEEEE');
+sheep.say();
