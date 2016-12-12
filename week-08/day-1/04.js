@@ -52,6 +52,7 @@ Carrier.prototype.addAircraft = function(plane){
 }
 
 Carrier.prototype.fill = function(){
+  this.totalDamage = 0;
   this.plane.forEach(function(plane){
     var fillAmount = 0
     if (plane.maxAmmo > this.totalAmmo){
@@ -76,6 +77,17 @@ Carrier.prototype.planeFight = function(){
   }, this);
 }
 
+Carrier.prototype.status_report = function(){
+  console.log('Aircraft count: '+ this.plane.length +', Ammo Storage: '+ this.totalAmmo +', Total damage: '+ this.totalDamage + ', Health Remaining: '+ this.health);
+  console.log('Aircrafts:');
+  this.plane.forEach(function(plane){
+    console.log('Type '+ plane.type + ', Ammo: ' + plane.ammo + ', Base Damage: '+ plane.baseDamage + ', All Damage: '+ plane.allDamage);
+  });
+  if (this.health <= 0) {
+    return 'It\'s dead Jim :(';
+  }
+}
+
 var plane1 = new Aircraft('F16');
 var plane2 = new Aircraft('F35');
 var carrier = new Carrier();
@@ -83,6 +95,4 @@ carrier.addAircraft(plane1);
 carrier.addAircraft(plane2);
 carrier.fill();
 carrier.planeFight();
-// console.log(plane1.fight());
-// console.log(plane1.refill(5));
-// console.log(plane1);
+var jim = carrier.status_report();
