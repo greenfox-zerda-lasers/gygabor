@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #50e3c2;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  width: 400px;
+  height: 500px;
+}
+
+h1 {
+    font-family: Lato-Light, sans-serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: #37404d;
+}
+
+.todo-item {
+    font-family: Lato-Regular, sans-serif;
+    font-size: 26px;
+    line-height: 2.2;
+    color: #cecece;
+}
+
+.button-text {
+    font-family: Lato-Regular, sans-serif;
+    font-size: 26px;
+    color: #ffffff;
+}
