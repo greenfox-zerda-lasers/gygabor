@@ -15,7 +15,7 @@ function Aircraft(type){
     this.maxAmmo = 12;
     this.baseDamage = 50;
   } else {
-    return 'This Type doesn\'t exist!'
+    return 'This Type doesn\'t exist!';
   }
   this.allDamage = this.maxAmmo * this.baseDamage;
 }
@@ -23,6 +23,7 @@ function Aircraft(type){
 Aircraft.prototype.fight = function(){
   var causedDamage = this.ammo * this.baseDamage;
   this.ammo = 0;
+  this.allDamage = this.maxAmmo * this.baseDamage;
   return causedDamage;
 }
 
@@ -31,6 +32,7 @@ Aircraft.prototype.refill = function(roundAmmo){
     if (this.ammo < this.maxAmmo) {
       this.ammo++;
       roundAmmo--;
+      this.allDamage = this.maxAmmo * this.baseDamage;
     }
   }
   return roundAmmo;
@@ -47,22 +49,30 @@ function Carrier(){
 
 Carrier.prototype.addAircraft = function(plane){
   this.plane.push(plane);
-  this.totalDamage += plane.allDamage;
 }
 
 Carrier.prototype.fill = function(){
   this.plane.forEach(function(plane){
+    var fillAmount = 0
     if (plane.maxAmmo > this.totalAmmo){
-      var fillAmount = this.totalAmmo;
+      fillAmount = this.totalAmmo;
     } else {
-      var fillAmount = this.totalAmmo;
+      fillAmount = plane.maxAmmo;
     }
     if (this.totalAmmo <= 0) {
       this.totalAmmo = 0;
       throw Error('No more Fuel');
     }
     var remainAmmo = plane.refill(fillAmount);
-    this.totalAmmo -= plane.maxAmmo-remainAmmo;
+    this.totalAmmo -= fillAmount-remainAmmo;
+    this.totalDamage += plane.allDamage;
+  }, this);
+}
+
+Carrier.prototype.planeFight = function(){
+  this.plane.forEach(function(plane){
+    var damage = plane.fight();
+    this.totalDamage -= damage
   }, this);
 }
 
@@ -71,7 +81,8 @@ var plane2 = new Aircraft('F35');
 var carrier = new Carrier();
 carrier.addAircraft(plane1);
 carrier.addAircraft(plane2);
-carrier.fill()
+carrier.fill();
+carrier.planeFight();
 // console.log(plane1.fight());
 // console.log(plane1.refill(5));
 // console.log(plane1);
