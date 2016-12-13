@@ -3,13 +3,12 @@
 //  - watch the DOMContentLoaded event also and change the background color of the page to red while the image is loading
 //  - add a 'load' event to the window object that logs "loaded" when the image is downloaded and changes back the background color of the page to white
 
-var body = document.getElementsByTagName('body')
 
 document.addEventListener('DOMContentLoaded', function(){
-  body[0].style.backgroundColor = "red";
+  document.body.style.backgroundColor = "red";
 });
 
 window.addEventListener('load', function(){
-  body[0].style.backgroundColor = "white";
+  document.body.style.backgroundColor = "white";
   console.log('loaded');
 });
