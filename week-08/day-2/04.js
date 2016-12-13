@@ -11,8 +11,7 @@ document.onmousemove = function(e){
 
 function checkCursor(){
     console.log("Cursor at: " + cursorX + ", " + cursorY);
+    setTimeout(checkCursor, 1500);
 }
 
-while (true){
-  setTimeout(checkCursor, 1500);
-}
+checkCursor()
