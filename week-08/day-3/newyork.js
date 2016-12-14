@@ -6,11 +6,40 @@ xhr.onreadystatechange = ready
 function ready(rsp) {
 	if( xhr.readyState === XMLHttpRequest.DONE ) {
 		var apolloArticles = JSON.parse(xhr.response);
-    console.log(apolloArticle);
-    display(apolloArticles);
+    appendList();
+    display(apolloArticles.response.docs);
 	}
 }
 
-fuction display(apolloArticles){
-  ``
+function appendList(){
+  var artList = document.querySelector('section')
+  var list = document.createElement('dl');
+  list.id = 'article-list';
+  artList.appendChild(list);
+}
+
+function display(apolloArt){
+  apolloArt.forEach(function(article){
+    console.log(article)
+    var listheadline = document.createElement('dt');
+    listheadline.innerText = 'Headline: '+ article.headline.main;
+    var artlist = document.querySelector('#article-list');
+    artlist.appendChild(listheadline);
+
+    var snippet = document.createElement('dd');
+    snippet.innerText = 'Snippet: '+ article.snippet;
+    artlist.appendChild(snippet);
+    var date = document.createElement('dd');
+    date.innerText = 'Publication date: '+ article.pub_date;
+    artlist.appendChild(date);
+    var link = document.createElement('dd');
+    var url = document.createElement('a');
+    url.href = article.web_url;
+    url.innerText = 'Link';
+    link.appendChild(url);
+    artlist.appendChild(link);
+
+
+  });
+
 }
