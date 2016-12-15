@@ -14,6 +14,11 @@ test('test double() gives back doublednumber', function(t){
 });
 
 test('test double() gives back doublednumber', function(t){
+  t.notEqual(double(1), 1);
+  t.end();
+});
+
+test('test double() gives back doublednumber', function(t){
   t.equal(double('1'), 2);
   t.end();
 });
