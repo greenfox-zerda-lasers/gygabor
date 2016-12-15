@@ -50,7 +50,7 @@ function App(){
   addTaskButton.addEventListener('click', function(){
     var addText = document.querySelector('#add-text')
     this.ajax.add(function(){
-      this.ajax.get(render)
+      this.ajax.get(render.bind(this))
     }.bind(this), addText.value);
   }.bind(this));
 
