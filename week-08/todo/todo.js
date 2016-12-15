@@ -23,6 +23,8 @@ function App(){
     todos.forEach(function(t){
       var todoElem = document.createElement('li');
       todoElem.innerText = t.text;
+      var garbage = document.createElement('button');
+      todoElem.appendChild(garbage);
       todolist.appendChild(todoElem);
     })
 
