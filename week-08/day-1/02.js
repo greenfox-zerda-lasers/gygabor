@@ -20,8 +20,6 @@ Rectangles.prototype.getCircumference = function(){
 
 var rect1 = new Rectangles(2, 3)
 console.log(rect1.getArea())
-console.log(rect1.getCircumference())
 
 var rect2 = new Rectangles(4, 5)
 console.log(rect2.getArea())
-console.log(rect2.getCircumference())
