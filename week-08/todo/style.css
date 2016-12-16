@@ -49,6 +49,7 @@ form {
   background-color: #df69e8;
   border: 1px solid #cecece;
   width: 80px;
+  cursor: pointer;
 }
 
 ul {
@@ -62,15 +63,47 @@ ul {
 
 li {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 5px 0px 5px 0px;
+}
+
+li input {
+  position: absolute;
+  z-index: -9999;
+}
+
+span {
+  width: 18px;
+  height: 18px;
+  border: 2px #9b9b9b solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 3px;
+  padding: 1px;
+}
+
+li input:checked + span {
+    background-color: #df69e8;
+}
+
+label {
+  flex-grow: 1;
+  flex-shrink: 0.5;
+  display: flex;
+  justify-content: space-between;;
+  height: 30px;
+  text-align: justify;
+  cursor: pointer;
 }
 
 ul button {
   border: 0px;
   padding: 0px;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   background-color: #f7f7f7;
   background-image: url("img/garbage.svg");
   background-size: cover;
+  cursor: pointer;
 }

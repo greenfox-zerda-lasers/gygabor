@@ -26,7 +26,6 @@ Ajax.prototype.add = function(callback, task){
 }
 
 Ajax.prototype.del = function(callback, delId){
-  console.log(delId);
   this.xhr.open('DELETE', 'https://mysterious-dusk-8248.herokuapp.com/todos/'+delId);
   this.xhr.send();
   this.xhr.onreadystatechange = function ready() {
@@ -59,18 +58,28 @@ function App(){
     todolist.innerHTML = '';
     todos.forEach(function(t){
       var todoElem = document.createElement('li');
-      todoElem.innerText = t.text;
+      var checkLabel = document.createElement('label');
+      checkLabel.htmlFor = t.id;
+      checkLabel.innerText = t.text;
+      var checkBox = document.createElement('input');
+      checkBox.type = 'checkbox';
+      checkBox.id = t.id;
+      var checkButton = document.createElement('span');
       var garbage = document.createElement('button');
       garbage.id = 'del-button';
 
       garbage.addEventListener('click', function(){
-        console.log(this);
         this.ajax.del(function(){
           this.ajax.get(render.bind(this))
         }.bind(this), t.id);
       }.bind(this));
 
+      checkLabel.appendChild(checkButton);
+      checkLabel.appendChild(checkBox);
+      todoElem.appendChild(checkLabel);
+      // todoElem.appendChild(checkBox);
       todoElem.appendChild(garbage);
+      // todoElem.appendChild(checkButton);
       todolist.appendChild(todoElem);
     }.bind(this))
   }
