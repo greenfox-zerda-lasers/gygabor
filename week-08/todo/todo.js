@@ -72,7 +72,11 @@ function App(){
       var todoElem = document.createElement('li');
       var checkLabel = document.createElement('label');
       checkLabel.htmlFor = t.id;
-      checkLabel.innerText = t.text;
+      if (t.text === ''){
+        checkLabel.innerText = 'No data'
+      } else {
+        checkLabel.innerText = t.text;
+      }
       var checkBox = document.createElement('input');
       checkBox.type = 'checkbox';
       checkBox.id = t.id;
@@ -103,9 +107,7 @@ function App(){
       checkLabel.appendChild(checkButton);
       checkLabel.appendChild(checkBox);
       todoElem.appendChild(checkLabel);
-      // todoElem.appendChild(checkBox);
       todoElem.appendChild(garbage);
-      // todoElem.appendChild(checkButton);
       todolist.appendChild(todoElem);
     }.bind(this))
   }
