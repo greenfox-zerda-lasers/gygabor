@@ -54,18 +54,26 @@ form {
 
 ul {
   padding: 0px;
-  color: #9b9b9b;
   font-weight: 300;
   list-style: none;
   font-size: 24px;
   line-height: 46px;
 }
 
-li {
+.un-checked {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
   margin: 5px 0px 5px 0px;
+  color: #9b9b9b;
+}
+
+.checked {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 5px 0px 5px 0px;
+  color: #cecece;
 }
 
 li input {
@@ -81,10 +89,16 @@ span {
   display: inline-block;
   margin: 3px;
   padding: 1px;
+  background-size: cover;
 }
 
-li input:checked + span {
-    background-color: #df69e8;
+.un-chk {
+  background: #f7f7f7;
+}
+
+.chk {
+  background-color: #df69e8;
+  background-image: url('img/checkmark.svg');
 }
 
 label {

@@ -25,6 +25,18 @@ Ajax.prototype.add = function(callback, task){
   }.bind(this);
 }
 
+Ajax.prototype.update = function(callback, elem, checked){
+  this.xhr.open('PUT', 'https://mysterious-dusk-8248.herokuapp.com/todos/'+elem.id);
+  this.xhr.setRequestHeader('Content-Type', 'application/json');
+  this.xhr.send(JSON.stringify({text: elem.text, completed: checked}));
+  this.xhr.onreadystatechange = function ready() {
+    if( this.xhr.readyState === XMLHttpRequest.DONE ) {
+      var todos = JSON.parse(this.xhr.response);
+      callback(todos);
+     }
+  }.bind(this);
+}
+
 Ajax.prototype.del = function(callback, delId){
   this.xhr.open('DELETE', 'https://mysterious-dusk-8248.herokuapp.com/todos/'+delId);
   this.xhr.send();
@@ -64,14 +76,28 @@ function App(){
       var checkBox = document.createElement('input');
       checkBox.type = 'checkbox';
       checkBox.id = t.id;
+      checkBox.checked = t.completed;
       var checkButton = document.createElement('span');
       var garbage = document.createElement('button');
       garbage.id = 'del-button';
+      if (t.completed){
+        todoElem.className = 'checked';
+        checkButton.className = 'chk'
+      } else {
+        todoElem.className = 'un-checked';
+        checkButton.className = 'un-chk'
+      }
 
       garbage.addEventListener('click', function(){
         this.ajax.del(function(){
           this.ajax.get(render.bind(this))
         }.bind(this), t.id);
+      }.bind(this));
+
+      checkBox.addEventListener('change', function(){
+        this.ajax.update(function(){
+          this.ajax.get(render.bind(this))
+        }.bind(this),t, checkBox.checked);
       }.bind(this));
 
       checkLabel.appendChild(checkButton);
