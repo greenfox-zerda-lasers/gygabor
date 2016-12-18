@@ -50,7 +50,6 @@ Ajax.prototype.del = function(callback, delId){
   }.bind(this);
 }
 
-
 // /////////////////////////////////////////////
 function App(){
   this.ajax = new Ajax();
