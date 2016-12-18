@@ -8,6 +8,7 @@ Ajax.prototype.get = function(callback){
   this.xhr.onreadystatechange = function ready() {
     if( this.xhr.readyState === XMLHttpRequest.DONE ) {
       var todos = JSON.parse(this.xhr.response);
+      console.log(callback)
       callback(todos);
     }
   }.bind(this);
@@ -48,9 +49,13 @@ Ajax.prototype.del = function(callback, delId){
   }.bind(this);
 }
 
+
+// /////////////////////////////////////////////
 function App(){
   this.ajax = new Ajax();
   this.ajax.get(render.bind(this));
+
+
 
   var form = document.querySelector('form')
   form.addEventListener('submit', function(e){
@@ -64,6 +69,7 @@ function App(){
       this.ajax.get(render.bind(this))
     }.bind(this), addText.value);
   }.bind(this));
+
 
   function render(todos){
     var todolist = document.querySelector('ul')
