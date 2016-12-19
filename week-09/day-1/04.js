@@ -7,7 +7,7 @@ var app = express();
 
 app.get('/todos/:id', function a(req, res) {
   res.send(jason.filter(function (e){
-    return parseInt(req.params.id) === e['id'];
+    return parseInt(req.params.id, 10) === e['id'];
   }));
 })
 
