@@ -4,11 +4,11 @@ var express = require('express');
 
 var app = express();
 
-app.get('/', function (request, respond) {
+app.get('/', function get(request, respond) {
   respond.send('Hey! How are you?');
 });
 
-app.post('/', function (request, respond) {
+app.post('/', function post(request, respond) {
   respond.send('Posted');
 });
 
