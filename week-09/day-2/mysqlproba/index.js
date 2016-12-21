@@ -15,7 +15,12 @@ connection.connect(function (error){
   }
 });
 
-connection.query("SELECT * FROM author;", function (err,rows) {
+connection.query("SELECT book_name FROM book_mast;", function (err,rows) {
+  console.log("Data received from Db:\n");
+  console.log(rows);
+});
+
+connection.query("SELECT book_name, aut_name FROM book_mast JOIN author ON book_mast.aut_id = author.aut_id;", function (err,rows) {
   console.log("Data received from Db:\n");
   console.log(rows);
 });
