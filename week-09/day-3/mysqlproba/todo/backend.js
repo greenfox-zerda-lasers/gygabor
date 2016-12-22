@@ -9,6 +9,12 @@ var app = express();
 
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var connection = mysql.createConnection({
@@ -37,15 +43,15 @@ app.get('/todo', function(req, res) {
    });
  });
 
-app.post('/todo', urlencodedParser, function(req, res) {
-  console.log(req.body);
-  connection.query('INSERT INTO todo (task, completed) VALUES ("'+req.body.task+'");', function(err,rows){
-    if(err) {
-      console.log('err.toString()');
-      return;
-    }
-    res.send('req.body.task');
-  });
-});
+// app.post('/todo', urlencodedParser, function(req, res) {
+//   console.log(req.body);
+//   connection.query('INSERT INTO todo (task, completed) VALUES ("'+req.body.task+'");', function(err,rows){
+//     if(err) {
+//       console.log('err.toString()');
+//       return;
+//     }
+//     res.send('req.body.task');
+//   });
+// });
 
 app.listen(3000);

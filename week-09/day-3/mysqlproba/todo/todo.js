@@ -1,47 +1,22 @@
 'use strict';
 
 function Ajax(){
-  console.log(this);
-  this.mysql = require('mysql');
-  this.express = require('express');
-  this.bodyParser = require('body-parser');
-  this.app = this.express();
-  this.app.use(this.bodyParser.json());
-  this.urlencodedParser = this.bodyParser.urlencoded({ extended: false });
-  this.connection = this.mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'cookies',
-    database: 'todo'
-  });
-  this.connection.connect(function (error){
-    if (error) {
-      console.log('muhahaha', error);
-      console.end;
-    } else {
-      console.log ('WOOOOWW');
-    }
-  });
+  this.xhr = new XMLHttpRequest();
 }
 
-Ajax.prototype.get = ('/todo', function(req, res, callback) {
- this.connection.query('SELECT * FROM todo',function(err,rows){
-   if(err) {
-     console.log(err.toString());
-     return;
-   }
-   callback(res.send(rows));
- });
-});
-//   this.xhr.open('GET', 'http://localhost:3000/', true);
-//   this.xhr.send(null);
-//   this.xhr.onreadystatechange = function ready() {
-//     if( this.xhr.readyState === XMLHttpRequest.DONE ) {
-//       var todos = JSON.parse(this.xhr.response);
-//       callback(todos);
-//     }
-//   }.bind(this);
-// }
+Ajax.prototype.get = function(callback) {
+  console.log(this);
+
+  this.xhr.open('GET', 'http://localhost:3000/todo', true);
+  this.xhr.setRequestHeader("Content-Type", "application/json");
+  this.xhr.send(null);
+  this.xhr.onreadystatechange = function ready() {
+    if( this.xhr.readyState === XMLHttpRequest.DONE ) {
+      var todos = JSON.parse(this.xhr.response);
+      callback(todos);
+    }
+  }.bind(this);
+}
 
 // Ajax.prototype.add = function(callback, task){
 //   this.xhr.open('POST', 'https://mysterious-dusk-8248.herokuapp.com/todos');
@@ -80,9 +55,9 @@ Ajax.prototype.get = ('/todo', function(req, res, callback) {
 
 // /////////////////////////////////////////////
 function App(){
-  console.log(this);
   this.ajax = new Ajax();
 }
+
 
 App.prototype.get = function(){
   console.log(this);
@@ -175,6 +150,5 @@ App.prototype.render = function(todos){
 }
 
 var application = new App();
-console.log(application);
 application.get();
 // application.add();
