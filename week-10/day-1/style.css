@@ -5,6 +5,28 @@ main {
   display: flex;
   flex-direction: column;
   border, padding, margin: 0px;
+  font-family: arial;
+  color: #04060b;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #F5F5F5;
+}
+
+.player {
+  width: 700px;
+  height: 50px;
+  background-color: #FFFFFF;
+  align-items: center;
+  border-radius: 5px;
+}
+
+audio {
+  width: 700px;
+  background-color: #FFFFFF;
+}
+
+::-webkit-media-controls-panel {
+  background-color: #FFFFFF;
+  height: 50px;
 }
 
 .informations {
@@ -14,4 +36,8 @@ main {
 
 article {
   width: 340px;
+}
+
+li {
+  cursor: pointer;
 }
