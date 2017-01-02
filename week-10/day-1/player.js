@@ -7,20 +7,30 @@
 // })
 
 var trackListHandling = (function (){
-  var trackList = document.querySelectorAll('.track-list');
-var audioPlayer = document.querySelector('audio');
+  var trackList = document.querySelectorAll('.track');
+  var audioPlayer = document.querySelector('audio');
+  var actualTrack = document.querySelector('.actual-track');
+
 
   function getTrack (){
     trackList.forEach( function (track) {
     track.addEventListener('click', function (){
-      addTrackPlayer(track.dataset.src);
+      actualTrack.innerText = '';
+      addTrackPlayer(track.dataset.src, track.innerText);
       })
     })
   }
 
-  function addTrackPlayer(trackLink){
+  function addTrackPlayer(trackLink, trackName){
     audioPlayer.src = trackLink;
-    audioPlayer.autoplay = 'true'
+    audioPlayer.autoplay = 'true';
+    addActualTrack(trackName);
+  }
+
+  function addActualTrack(trackName){
+    var actualTrackName = document.createElement('p');
+    actualTrackName.innerText = trackName;
+    actualTrack.appendChild(actualTrackName);
   }
 
   return {
