@@ -4,6 +4,7 @@ body {
 }
 
 main {
+
   background-color: #F5F5F5;
   width: 700px;
   height: 390px;
@@ -30,6 +31,42 @@ article {
 .track-handling {
   display: flex;
   flex-direction: column;
+}
+
+.lists-notification{
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-addplaylist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 1;
+  padding: 15px 0px 0px 15px;
+}
+
+.add-playlist {
+  position: relative;
+}
+
+.add-playlist:before {
+  content: "+";
+  position:absolute;
+  left: 160px;
+  top: -5px;
+  font-size: 30px;
+}
+
+.notification-artwork {
+  height: 135px;
+  display: flex;
+
+}
+
+#artwork-img {
+  height: 135px;
+  width: 135px;
 }
 
 ol {
