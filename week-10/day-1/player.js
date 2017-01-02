@@ -1,3 +1,4 @@
+'use strict';
 // var mp3Folder = './mp3/';
 // var fs = require('fs');
 // fs.readdir(testFolder, (err, files) => {
