@@ -12,7 +12,6 @@ var trackListHandling = (function (){
   var audioPlayer = document.querySelector('audio');
   var actualTrack = document.querySelector('.actual-track');
 
-
   function getTrack (){
     trackList.forEach( function (track) {
     track.addEventListener('click', function (){
