@@ -4,7 +4,6 @@ body {
 }
 
 main {
-
   background-color: #F5F5F5;
   width: 700px;
   height: 390px;
@@ -96,11 +95,53 @@ li:nth-child(even) {
   width: 700px;
   height: 50px;
   background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
-::-webkit-media-controls-panel {
-  background-color: #FFFFFF;
-  height: 50px;
-  width: 700px;
+button {
+  width: 15px;
+  height: 15px;
+  border: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+input {
+  display: none;
+}
+
+#rewind {
+  flex: 0 0 20px;
+  background: url("../img/rewind.svg") no-repeat;
+  background-position: center;
+}
+
+#play-pause {
+  flex: 0 0 20px;
+  background: url("../img/play.svg") no-repeat;
+  background-position: center;
+}
+
+#forward {
+  flex: 0 0 20px;
+  background: url("../img/forward.svg") no-repeat;
+  background-position: center;
+}
+
+.seek {
+  flex: 0 0 300px;
+}
+
+#shuffle {
+  flex: 0 0 20px;
+  background: url("../img/shuffle.svg") no-repeat;
+  background-position: center;
+}
+
+#volume {
+  flex: 0 0 20px;
+  background: url("../img/volume.svg") no-repeat;
+  background-position: center;
 }

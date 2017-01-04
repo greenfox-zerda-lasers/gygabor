@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/rangeSlider.css">
+
+
+  </head>
+
+  <body>
+    <main>
+      <section class="informations">
+
+        <article class="lists-notification">
+          <div class="notification-artwork">
+            <div class="logo-addplaylist">
+              <div class="fox-logo">
+                <img src="./img/foxplayer.png">
+              </div>
+              <p class="add-playlist">
+                Playlists
+              </p>
+            </div>
+            <div class="artwork">
+              <img id="artwork-img" src="./img/music-placeholder.png">
+            </div>
+          </div>
+          <ol class="play-lists">
+            <li class="pl-list">All Tracks</li>
+            <li class="pl-list">Favorites</li>
+          </ol>
+        </article>
+
+        <article class="track-handling">
+
+          <div class="actual-track">
+
+          </div>
+
+          <ol class="track-list">
+            <li class="track" data-src="./mp3/Ars_Sonor_-_02_-_Never_Give_Up.mp3">Ars Sonor - Never Give Up</li>
+            <li class="track" data-src="./mp3/Doctor_Turtle_-_Doctor_Talos_Answers_The_Door.mp3">Doctor Turtle - Doctor Talos Answers The Door</li>
+
+          </ol>
+        </article>
+
+      </section>
+      <section class="player">
+          <audio class="audio-player" controls></audio>
+
+          <button id="rewind"></button>
+          <button id="play-pause"></button>
+          <button id="forward"></button>
+          <div class="seek">
+            <input type="range-seek" min="0" max="100" step="1" data-buffer="60">
+          </div>
+          <button id="shuffle"></button>
+          <button id="volume"></button>
+          <div class="volume-slider">
+            <input type="range" min="0" max="100" step="1" data-buffer="60" />
+          </div>
+      </section>
+    </main>
+
+    <script src="rangeSlider.js"></script>
+    <script src="player.js"></script>
+  </body>
+</html>
