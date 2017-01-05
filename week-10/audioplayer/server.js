@@ -21,8 +21,8 @@ var readTrackData = (function () {
         }
         fileNames.forEach(function(f) {
           files.push(f);
-          metaData.push(readMeta(f));
-          console.log(files);
+          // metaData.push(readMeta(f));
+          // console.log(files);
         });
         // console.log(files)
         return (files);

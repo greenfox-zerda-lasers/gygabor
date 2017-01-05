@@ -12,7 +12,7 @@ var trackListHandling = (function (){
   function playTrack (){
     trackList.forEach( function (track) {
     track.addEventListener('click', function (){
-      controlPanel.playTrack(track.dataset.src);
+      controlPanel.loadTrack(track.dataset.src);
       })
     })
   }

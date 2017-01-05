@@ -40,12 +40,17 @@ var audio = (function () {
 		audioNode.currentTime = audioNode.duration * percent;
 	}
 
+  function isPaused() {
+		return audioNode.paused;
+	}
+
 	return {
 		load: load,
 		play: play,
 		pause: pause,
     volume: volume,
     seek: seek,
+    paused: isPaused
 
 		// seek: seek,
 		// onUpdate: setUpdateEvent,

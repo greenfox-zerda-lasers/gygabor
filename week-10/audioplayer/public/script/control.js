@@ -4,16 +4,23 @@ var controlPanel = (function (){
   var playButton = document.querySelector('#play-pause');
 
   playButton.addEventListener('click', function(){
-      playTrack('../mp3/Doctor_Turtle_-_Doctor_Talos_Answers_The_Door.mp3');
+    if (audio.paused()){
+      playButton.style.background = 'url(img/pause.svg) no-repeat';
+      playButton.style.backgroundPosition = 'center'
+      audio.play();
+    } else {
+      playButton.style.background = 'url(img/play.svg) no-repeat';
+      playButton.style.backgroundPosition = 'center'
+      audio.pause();
+    }
   })
 
-  function playTrack (url){
+  function loadTrack (url){
     audio.load(url);
-    audio.play();
   }
 
   return {
-    playTrack: playTrack,
+    loadTrack: loadTrack,
   }
 })();
 		// audio.play();
