@@ -145,3 +145,7 @@ input {
   background: url("../img/volume.svg") no-repeat;
   background-position: center;
 }
+
+.volume-slider {
+  flex: 0 0 80px;
+}

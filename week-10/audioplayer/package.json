@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "jsmediatags": "^3.3.2",
     "mysql": "^2.12.0"
   }
 }

@@ -3,8 +3,60 @@
 var mysql = require("mysql");
 var express = require('express');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var jsmediatags = require("jsmediatags");
 
 var app = express();
+
+var readTrackData = (function () {
+  var mp3Folder = './public/mp3/';
+  var files = [];
+  var metaData = [];
+
+  function readDir(track){
+    if (track === 'all'){
+      fs.readdir(mp3Folder, function (err, fileNames) {
+        if (err) {
+          throw err;
+        }
+        fileNames.forEach(function(f) {
+          files.push(f);
+          // metaData.push(readMeta(f));
+          // console.log(metaData);
+        });
+        // console.log(files)
+        return (files);
+      });
+    }
+  }
+
+  function readMeta(track){
+
+    jsmediatags.read(''+ mp3Folder + track + '', {
+      onSuccess: function(tag) {
+        var data = []
+        data.push(tag)
+        // console.log(data)
+        return (data);
+      },
+      onError: function(error) {
+        console.log(error);
+      }
+    });
+
+  }
+  return {
+    readDirectory: readDir,
+    // file: files,
+    // metaData: metaData
+  };
+})();
+
+// readTrackData.readDirectory('all');
+var i = function(){
+  return readTrackData.readDirectory('all');
+}
+console.log(i);
 
 app.use(bodyParser.json());
 
