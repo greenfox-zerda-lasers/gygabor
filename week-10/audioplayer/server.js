@@ -9,7 +9,7 @@ var jsmediatags = require("jsmediatags");
 var app = express();
 
 var readTrackData = (function () {
-  var mp3Folder = './public/mp3/';
+  var mp3Folder = './mp3/';
   var files = [];
   var metaData = [];
 
@@ -21,8 +21,8 @@ var readTrackData = (function () {
         }
         fileNames.forEach(function(f) {
           files.push(f);
-          // metaData.push(readMeta(f));
-          // console.log(metaData);
+          metaData.push(readMeta(f));
+          console.log(files);
         });
         // console.log(files)
         return (files);
@@ -36,7 +36,7 @@ var readTrackData = (function () {
       onSuccess: function(tag) {
         var data = []
         data.push(tag)
-        // console.log(data)
+        console.log(data)
         return (data);
       },
       onError: function(error) {
@@ -51,12 +51,7 @@ var readTrackData = (function () {
     // metaData: metaData
   };
 })();
-
-// readTrackData.readDirectory('all');
-var i = function(){
-  return readTrackData.readDirectory('all');
-}
-console.log(i);
+readTrackData.readDirectory('all')
 
 app.use(bodyParser.json());
 
