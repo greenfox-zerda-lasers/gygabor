@@ -37,12 +37,11 @@ article {
   flex-direction: column;
 }
 
-.logo-addplaylist {
+.playlist {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   flex-grow: 1;
-  padding: 15px 0px 0px 15px;
 }
 
 .add-playlist {
@@ -72,7 +71,7 @@ article {
 }
 
 .notification-artwork {
-  height: 135px;
+  flex: 0 0 135px;
   display: flex;
   justify-content: space-between;
 }

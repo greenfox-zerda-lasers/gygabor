@@ -9,7 +9,6 @@ var Playlists = (function () {
 	var ajax = new Ajax();
 
 	function render(){
-    console.log(playlists);
 		playlists.forEach(function(playlist){
 			var li = _createPlaylistItem(playlist.playlist, playlist.id);
 			listNode.appendChild(li);
@@ -34,19 +33,17 @@ var Playlists = (function () {
 
 	return {
 		init: function(){
-      console.log(playlists)
 			ajax.getPlaylists(function(res){
 				playlists = res;
 				render();
 			});
 
-			// createButton.addEventListener('click',function(){
-			// 	var input = prompt('Enter playlist name');
-			// 	ajax.createPlaylists( input, function(rsp){
-			// 		console.log(rsp)
-			// 		create(input, rsp.id);
-			// 	});
-			// });
+			createButton.addEventListener('click',function(){
+				var input = prompt('Enter playlist name');
+				ajax.createPlaylists( input, function(rsp){
+					create(input, rsp.id);
+				});
+			});
 		},
 	}
 })();

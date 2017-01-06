@@ -80,10 +80,8 @@ connection.connect(function (error){
 });
 
 app.get('/playlists', function(req, res) {
-  console.log('dfd')
 	connection.query('SELECT * FROM playlists', function(err, rows, fields) {
 		if (err) throw err;
-    console.log(rows)
   	res.send(rows);
 	});
 });
