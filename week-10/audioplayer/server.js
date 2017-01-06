@@ -55,12 +55,12 @@ readTrackData.readDirectory('all')
 
 app.use(bodyParser.json());
 
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+  next();
+});
 
 
 var connection = mysql.createConnection({
@@ -80,9 +80,11 @@ connection.connect(function (error){
 });
 
 app.get('/playlists', function(req, res) {
+  console.log('dfd')
 	connection.query('SELECT * FROM playlists', function(err, rows, fields) {
 		if (err) throw err;
-  		res.send(rows);
+    console.log(rows)
+  	res.send(rows);
 	});
 });
 
@@ -128,4 +130,6 @@ app.post('/playlists-tracks/:playlist_id', function (req, res) {
 	});
 }),
 
-app.listen(3000);
+app.listen(3000, function(){
+	console.log('SERVER IS UP AND RUNNIN on port: 3000')
+});

@@ -17,7 +17,7 @@ var controlPanel = (function (){
 
   function loadTrack (url){
     audio.load(url);
-  }
+  };
 
   return {
     loadTrack: loadTrack,

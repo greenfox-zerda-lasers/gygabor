@@ -32,7 +32,7 @@ article {
   flex-direction: column;
 }
 
-.lists-notification{
+.art-playlist{
   display: flex;
   flex-direction: column;
 }
@@ -46,21 +46,35 @@ article {
 }
 
 .add-playlist {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.add-playlist:before {
-  content: "+";
-  position:absolute;
-  left: 160px;
-  top: -5px;
-  font-size: 30px;
+#playlist-title {
+  flex: 0 0 120px;
+}
+
+#add-playlist-button {
+  position: relative;
+  background: none;
+  margin: 0px 5px 0px 0px;
+}
+
+#add-playlist-button:before {
+  content: "\002b";
+  position: absolute;
+  top: 1;
+  left: 0;
+  font-size: 20px;
+  line-height: 0;
+  color: #7A7A7A;
 }
 
 .notification-artwork {
   height: 135px;
   display: flex;
-
+  justify-content: space-between;
 }
 
 #artwork-img {
@@ -68,7 +82,7 @@ article {
   width: 135px;
 }
 
-ol {
+ul {
   margin: 0px;
   font-size: 12px;
   overflow: scroll;

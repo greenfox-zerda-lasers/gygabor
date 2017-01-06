@@ -23,7 +23,6 @@ var controlHandling = (function(){
         stick: null,        // [Number stickTo, Number stickRadius] : use it if handle should stick to stickTo-th value in stickRadius
         borderRadius: 10,    // Number, if you use buffer + border-radius in css for looks good,
         onInit: function () {
-            console.info('onInit')
             // audio.seek(0);
         },
         onSlideStart: function (position, value) {

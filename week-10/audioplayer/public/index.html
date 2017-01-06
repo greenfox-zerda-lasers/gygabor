@@ -14,24 +14,25 @@
     <main>
       <section class="informations">
 
-        <article class="lists-notification">
-          <div class="notification-artwork">
-            <div class="logo-addplaylist">
-              <div class="fox-logo">
-                <img src="./img/foxplayer.png">
-              </div>
-              <p class="add-playlist">
-                Playlists
-              </p>
+        <article class="art-playlist">
+          <article class="notification-artwork">
+            <div class="fox-logo">
+              <img src="./img/foxplayer.png">
             </div>
             <div class="artwork">
               <img id="artwork-img" src="./img/music-placeholder.png">
             </div>
-          </div>
-          <ol class="play-lists">
-            <li class="pl-list">All Tracks</li>
-            <li class="pl-list">Favorites</li>
-          </ol>
+          </article>
+          <article class="playlist">
+            <div class="add-playlist">
+              <p id="playlist-title">Playlists</p>
+              <button id="add-playlist-button"></button>
+            </div>
+            <ul class="play-lists">
+              <li class="pl-list">All Tracks</li>
+              <li class="pl-list">Favorites</li>
+            </ul>
+          </article>
         </article>
 
         <article class="track-handling">
@@ -40,11 +41,11 @@
 
           </div>
 
-          <ol class="track-list">
+          <ul class="track-list">
             <li class="track" data-src="../mp3/Ars_Sonor_-_02_-_Never_Give_Up.mp3">Ars Sonor - Never Give Up</li>
             <li class="track" data-src="../mp3/Doctor_Turtle_-_Doctor_Talos_Answers_The_Door.mp3">Doctor Turtle - Doctor Talos Answers The Door</li>
 
-          </ol>
+          </ul>
         </article>
 
       </section>
@@ -66,9 +67,14 @@
     </main>
 
     <script src="./script/rangeSlider.js"></script>
+    <script src="./script/ajax.js"></script>
     <script src="./script/audio.js"></script>
     <script src="./script/slider.js"></script>
     <script src="./script/control.js"></script>
+    <script src="./script/playlist.js"></script>
     <script src="./script/tracklist.js"></script>
+    <script>
+		  Playlists.init();
+	  </script>
   </body>
 </html>
