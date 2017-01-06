@@ -44,9 +44,10 @@ var trackListHandling = (function (){
 	}
 
   function addActualTrack(trackData){
-    var actualTrackName = document.createElement('p');
+    var actualTrackName = root.querySelector('p');
+    var addTrackList = root.querySelector('#add-to-playlist');
+    actualTrackName.innerText = '';
     actualTrackName.innerText = trackData.artist + ' - ' + trackData.title;
-    actualTrack.appendChild(actualTrackName);
   }
 
 

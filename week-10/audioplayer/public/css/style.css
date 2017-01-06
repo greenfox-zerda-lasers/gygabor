@@ -28,6 +28,12 @@ article {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.actual-track > p{
+  flex: 0 0 280px;
+  overflow: scroll;
 }
 
 .track-handling {
@@ -59,12 +65,13 @@ article {
   flex: 0 0 120px;
 }
 
-#add-playlist-button {
+#add-playlist-button, #add-to-playlist {
   position: relative;
   background: none;
+  cursor: pointer;
 }
 
-#add-playlist-button:before {
+#add-playlist-button:before, #add-to-playlist:before {
   content: "\002b";
   position: absolute;
   /*top: 1;*/
@@ -133,6 +140,11 @@ li:nth-child(even) {
 
 .track-list > li{
   cursor: pointer;
+}
+
+#add-to-fav {
+  background: url("../img/star.svg") no-repeat;
+  background-position: center;
 }
 
 .player {
