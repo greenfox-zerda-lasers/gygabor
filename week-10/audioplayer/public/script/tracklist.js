@@ -45,9 +45,14 @@ var trackListHandling = (function (){
 
   function addActualTrack(trackData){
     var actualTrackName = root.querySelector('p');
-    var addTrackList = root.querySelector('#add-to-playlist');
+    var addTrList = root.querySelector('#add-to-playlist');
     actualTrackName.innerText = '';
     actualTrackName.innerText = trackData.artist + ' - ' + trackData.title;
+    // addTrList.addEventListener('click' function(){
+    //   ajax.addTrackList(trackData, function(){
+    //
+    //   });
+    // });
   }
 
 

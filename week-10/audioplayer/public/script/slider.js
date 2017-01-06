@@ -26,14 +26,14 @@ var controlHandling = (function(){
             // audio.seek(0);
         },
         onSlideStart: function (position, value) {
-            console.info('onSlideStart', 'position: ' + position, 'value: ' + value);
+            // console.info('onSlideStart', 'position: ' + position, 'value: ' + value);
         },
         onSlide: function (position, value) {
-            console.log('onSlide', 'position: ' + position, 'value: ' + value);
+            // console.log('onSlide', 'position: ' + position, 'value: ' + value);
             audio.seek(value);
         },
         onSlideEnd: function (position, value) {
-            console.warn('onSlideEnd', 'position: ' + position, 'value: ' + value);
+            // console.warn('onSlideEnd', 'position: ' + position, 'value: ' + value);
         }
     });
   })();
@@ -49,25 +49,26 @@ var controlHandling = (function(){
         startEvent: ['mousedown', 'touchstart', 'pointerdown'],
         moveEvent: ['mousemove', 'touchmove', 'pointermove'],
         endEvent: ['mouseup', 'touchend', 'pointerup'],
-        min: null,          // Number , 0
-        max: null,          // Number, 100
-        step: null,         // Number, 1
-        value: null,        // Number, center of slider
+        min: 0,          // Number , 0
+        max: 100,          // Number, 100
+        step: 1,         // Number, 1
+        value: 50,        // Number, center of slider
         buffer: null,       // Number, in percent, 0 by default
-        stick: null,        // [Number stickTo, Number stickRadius] : use it if handle should stick to stickTo-th value in stickRadius
+        stick: null,
+               // [Number stickTo, Number stickRadius] : use it if handle should stick to stickTo-th value in stickRadius
         borderRadius: 10,    // Number, if you use buffer + border-radius in css for looks good,
         onInit: function () {
-          audio.volume(0);
+          audio.volume(0.5);
         },
         onSlideStart: function (position, value) {
-            console.info('onSlideStart', 'position: ' + position, 'value: ' + value);
+            // console.info('onSlideStart', 'position: ' + position, 'value: ' + value);
         },
         onSlide: function (position, value) {
-          console.log('onSlide', 'position: ' + position, 'value: ' + value);
+          // console.log('onSlide', 'position: ' + position, 'value: ' + value);
           audio.volume(value);
         },
         onSlideEnd: function (position, value) {
-            console.warn('onSlideEnd', 'position: ' + position, 'value: ' + value);
+            // console.warn('onSlideEnd', 'position: ' + position, 'value: ' + value);
         }
     });
   })();

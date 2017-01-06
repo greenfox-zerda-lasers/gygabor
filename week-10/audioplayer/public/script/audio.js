@@ -1,12 +1,16 @@
 var audio = (function () {
 	var audioNode = document.createElement('audio');
-	// var timeCallback = function(){};
+
+	var timeCallback = function(position){
+		var seekSlider = document.querySelector('input[type="range-seek"]');
+			seekSlider.rangeSlider.update({value: position})
+	};
 	// var endCallback = function(){};
 
-	// audioNode.addEventListener('timeupdate', function(){
-	// 	timeCallback(audioNode.currentTime / audioNode.duration * 100);
-	// });
-  //
+	audioNode.addEventListener('timeupdate', function(){
+		timeCallback(audioNode.currentTime / audioNode.duration * 100);
+	});
+
 	// audioNode.addEventListener('ended', function(){
 	// 	endCallback();
 	// });

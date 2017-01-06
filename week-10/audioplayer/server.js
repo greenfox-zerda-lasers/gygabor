@@ -43,7 +43,6 @@ app.get('/playlists', function(req, res) {
 });
 
 app.post('/playlists', function (req, res) {
-  console.log(req.body.playlist);
   connection.query('INSERT INTO playlists (playlist, system) VALUES ("' + req.body.playlist + '", 0);', function(err, rows, fields) {
 		if (err) throw err;
   		res.send(rows);
@@ -84,7 +83,7 @@ app.get('/playlist-tracks/:playlist_id', function (req, res) {
 }),
 
 app.post('/playlist-tracks', function (req, res) {
-  connection.query('INSERT INTO tracks (path, playlist_id) VALUES ("' + req.body.path + '", 0);', function(err, rows, fields) {
+  connection.query('INSERT INTO tracks (path, playlist_id) VALUES ("' + req.body.path + '", "'+req.body.id+'");', function(err, rows, fields) {
 		if (err) throw err;
   		res.send(rows);
 	});
