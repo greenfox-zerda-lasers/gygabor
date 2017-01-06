@@ -36,9 +36,7 @@ var Playlists = (function () {
 		buttonDelete.className = 'delete-button';
 
 		buttonList.addEventListener('click', function(){
-			console.log(id);
-			// TODO: Render tracks
-			// Tracks.load(id);
+			trackListHandling.loadListTrack(id);
 		});
 
 		buttonDelete.addEventListener('click', function(){

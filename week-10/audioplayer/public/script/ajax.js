@@ -11,13 +11,25 @@ var Ajax = function (){
       var data = {playlist: listName}
   		this.open('POST', 'playlists', data, callback);
   	}
-  	// this.addTrackList = function(listName, callback) {
-    //   var data = {playlist: listName}
-  	// 	this.open('POST', 'playlists', data, callback);
-  	// }
+
+  	this.addTrackList = function(listID, trackPath, callback) {
+      console.log(listID)
+      console.log(trackPath)
+      var data = {path: trackPath, playlist_id: listID}
+  		this.open('POST', 'playlist-tracks/', data, callback);
+  	}
 
     this.getAllTracks = function(callback) {
       this.open('GET', 'playlist-tracks', false, callback);
+    }
+
+    this.getListTracks = function(id, callback) {
+      this.open('GET', 'playlist-tracks/'+id, false, callback);
+    }
+
+    this.getTracks = function(tracks, callback) {
+      console.log(tracks)
+      // this.open('GET', 'playlist-tracks/'+id, false, callback);
     }
 
     this.deletePlaylists = function(Id, callback){

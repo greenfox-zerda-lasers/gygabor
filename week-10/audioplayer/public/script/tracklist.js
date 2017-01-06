@@ -15,9 +15,23 @@ var trackListHandling = (function (){
     })
   }
 
+  function loadTrack(track){
+    ajax.getTracks(track, function(res){
+      tracks = res;
+      render()
+    })
+  }
+
+  function loadListTrack(id){
+    ajax.getListTracks(id, function(res){
+      loadTrack(res);
+    })
+  }
+
   function render(){
     clearList()
     var trackId = 1;
+
     tracks.forEach(function(track){
       var li = _createPlaylistItem(trackId, track);
       trackList.appendChild(li);
@@ -34,6 +48,7 @@ var trackListHandling = (function (){
 
   function _createPlaylistItem(id, trackData) {
 		var li = document.createElement('li');
+    console.log(trackData)
 		li.innerHTML = id +'. ' + trackData.artist + ' - ' + trackData.title;
 		li.addEventListener('click', function(){
 			var trackPath = '../mp3/'+trackData.fileName;
@@ -48,18 +63,25 @@ var trackListHandling = (function (){
     var addTrList = root.querySelector('#add-to-playlist');
     actualTrackName.innerText = '';
     actualTrackName.innerText = trackData.artist + ' - ' + trackData.title;
-    // addTrList.addEventListener('click' function(){
-    //   ajax.addTrackList(trackData, function(){
-    //
-    //   });
-    // });
+    addTrList.addEventListener('click', function(){
+      var input = prompt('Enter playlist name');
+      var playlist = []
+      ajax.getPlaylists(function(res){
+        playlist = res.filter(function(r){
+          return (r.playlist === input);
+        });
+        console.log(playlist[0].id);
+        ajax.addTrackList(playlist[0].id, '../mp3/'+trackData.fileName, function(){
+        });
+      });
+
+    });
   }
 
 
   return {
     loadAllTrack: loadAllTrack,
-    // loadTrack: loadTrack
-    // playTrack: playTrack,
+    loadListTrack: loadListTrack
+
   };
 })();
-// trackListHandling.playTrack();

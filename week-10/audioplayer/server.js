@@ -83,14 +83,14 @@ app.get('/playlist-tracks/:playlist_id', function (req, res) {
 }),
 
 app.post('/playlist-tracks', function (req, res) {
-  connection.query('INSERT INTO tracks (path, playlist_id) VALUES ("' + req.body.path + '", "'+req.body.id+'");', function(err, rows, fields) {
+  connection.query('INSERT INTO tracks (path, playlist_id) VALUES ("' + req.body.path + '", "'+req.body.playlist_id+'");', function(err, rows, fields) {
 		if (err) throw err;
   		res.send(rows);
 	});
 }),
 
 app.post('/playlists-tracks/:playlist_id', function (req, res) {
-  connection.query('UPDATE tracks SET playlist_id = "' + req.params.playlist_id + '";', function(err, rows, fields) {
+  connection.query('INSERT INTO tracks (path, playlist_id) VALUES ("' + req.body.trackPath + '", "'+req.params.playlist_id+'");', function(err, rows, fields) {
 		if (err) throw err;
   		res.send(rows);
 	});
