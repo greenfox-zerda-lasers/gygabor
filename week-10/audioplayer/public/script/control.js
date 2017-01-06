@@ -4,6 +4,10 @@ var controlPanel = (function (){
   var playButton = document.querySelector('#play-pause');
 
   playButton.addEventListener('click', function(){
+    playTrack()
+  });
+
+  function playTrack (){
     if (audio.paused()){
       playButton.style.background = 'url(img/pause.svg) no-repeat';
       playButton.style.backgroundPosition = 'center'
@@ -13,10 +17,11 @@ var controlPanel = (function (){
       playButton.style.backgroundPosition = 'center'
       audio.pause();
     }
-  })
+  }
 
   function loadTrack (url){
     audio.load(url);
+    playTrack();
   };
 
   return {

@@ -11,6 +11,10 @@ var Ajax = function (){
   		this.open('POST', 'playlists', listName, callback);
   	}
 
+    this.getAllTracks = function(callback) {
+      this.open('GET', 'playlist-tracks', false, callback)
+    }
+
   	this.open = function(method, resource, data, callback) {
   		var xhr = new XMLHttpRequest();
   		data = (data) ? data : null;

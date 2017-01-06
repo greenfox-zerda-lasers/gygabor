@@ -4,6 +4,9 @@ var Playlists = (function () {
 	var root = document.querySelector('.playlist');
 	var listNode = root.querySelector('.play-lists');
 	var createButton = root.querySelector('.add-playlist');
+	var allTrButton = root.querySelector('#all-track');
+	var FavTrButton = root.querySelector('#fav-track');
+
 
 	var playlists = [];
 	var ajax = new Ajax();
@@ -43,6 +46,13 @@ var Playlists = (function () {
 				ajax.createPlaylists( input, function(rsp){
 					create(input, rsp.id);
 				});
+			});
+
+			allTrButton.addEventListener('click',function(){
+        trackListHandling.loadAllTrack();
+				// ajax.createPlaylists( input, function(rsp){
+				// 	create(input, rsp.id);
+				// });
 			});
 		},
 	}

@@ -4,54 +4,10 @@ var mysql = require("mysql");
 var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var jsmediatags = require("jsmediatags");
+var meta = require('musicmetadata');
+var async = require('async');
 
 var app = express();
-
-var readTrackData = (function () {
-  var mp3Folder = './mp3/';
-  var files = [];
-  var metaData = [];
-
-  function readDir(track){
-    if (track === 'all'){
-      fs.readdir(mp3Folder, function (err, fileNames) {
-        if (err) {
-          throw err;
-        }
-        fileNames.forEach(function(f) {
-          files.push(f);
-          // metaData.push(readMeta(f));
-          // console.log(files);
-        });
-        // console.log(files)
-        return (files);
-      });
-    }
-  }
-
-  function readMeta(track){
-
-    jsmediatags.read(''+ mp3Folder + track + '', {
-      onSuccess: function(tag) {
-        var data = []
-        data.push(tag)
-        console.log(data)
-        return (data);
-      },
-      onError: function(error) {
-        console.log(error);
-      }
-    });
-
-  }
-  return {
-    readDirectory: readDir,
-    // file: files,
-    // metaData: metaData
-  };
-})();
-readTrackData.readDirectory('all')
 
 app.use(bodyParser.json());
 
@@ -101,9 +57,21 @@ app.delete('/playlists/:id', function (req, res) {
 }),
 
 app.get('/playlist-tracks', function (req, res) {
-  connection.query('SELECT * FROM tracks', function(err, rows, fields) {
-		if (err) throw err;
-  		res.send(rows);
+  fs.readdir('./mp3/', function (err, files) {
+		var coll = [];
+		async.each(
+			files,
+			function (file, callback){
+				meta(fs.createReadStream('./mp3/' + file), { duration: true }, function (err, metadata) {
+					metadata.fileName = file;
+					coll.push(metadata);
+				 	callback();
+				});
+			},
+			function(){
+  				res.send(coll);
+			}
+		);
 	});
 }),
 
