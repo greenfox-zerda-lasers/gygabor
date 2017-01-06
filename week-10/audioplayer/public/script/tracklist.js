@@ -3,11 +3,10 @@
 var trackListHandling = (function (){
   var root = document.querySelector('.track-handling');
   var trackList = root.querySelector('.track-list');
-  // var actualTrack = root.querySelector('.actual-track');
+  var actualTrack = root.querySelector('.actual-track');
   var tracks = []
 
   var ajax = new Ajax();
-
 
   function loadAllTrack(){
     ajax.getAllTracks(function(res){
@@ -39,29 +38,17 @@ var trackListHandling = (function (){
 		li.addEventListener('click', function(){
 			var trackPath = '../mp3/'+trackData.fileName;
 			controlPanel.loadTrack(trackPath);
+      addActualTrack(trackData);
 		});
 		return li;
 	}
 
-  // function playTrack (){
-  //   trackList.forEach( function (track) {
-  //   track.addEventListener('click', function (){
-  //     controlPanel.loadTrack(track.dataset.src);
-  //     })
-  //   })
-  // }
+  function addActualTrack(trackData){
+    var actualTrackName = document.createElement('p');
+    actualTrackName.innerText = trackData.artist + ' - ' + trackData.title;
+    actualTrack.appendChild(actualTrackName);
+  }
 
-  // function addTrackPlayer(trackLink, trackName){
-  //   audioPlayer.src = trackLink;
-  //   audioPlayer.autoplay = 'true';
-  //   addActualTrack(trackName);
-  // }
-
-  // function addActualTrack(trackName){
-  //   var actualTrackName = document.createElement('p');
-  //   actualTrackName.innerText = trackName;
-  //   actualTrack.appendChild(actualTrackName);
-  // }
 
   return {
     loadAllTrack: loadAllTrack,

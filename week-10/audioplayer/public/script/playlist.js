@@ -23,14 +23,33 @@ var Playlists = (function () {
 		listNode.appendChild(li);
 	}
 
+	function deleteList(li){
+		listNode.removeChild(li);
+	}
+
 	function _createPlaylistItem(name, id) {
 		var li = document.createElement('li');
-		li.innerHTML = name;
-		li.addEventListener('click', function(){
+		var buttonList = document.createElement('button');
+		var buttonDelete = document.createElement('button');
+		buttonList.innerHTML = name;
+		buttonList.className = 'list-name';
+		buttonDelete.className = 'delete-button';
+
+		buttonList.addEventListener('click', function(){
 			console.log(id);
 			// TODO: Render tracks
-			Tracks.load(id);
+			// Tracks.load(id);
 		});
+
+		buttonDelete.addEventListener('click', function(){
+			ajax.deletePlaylists(id, function(){
+				deleteList(li);
+			});
+		});
+
+		li.appendChild(buttonList);
+		li.appendChild(buttonDelete);
+
 		return li;
 	}
 

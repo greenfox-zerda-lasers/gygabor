@@ -25,6 +25,9 @@ article {
 
 .actual-track {
   height: 61px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .track-handling {
@@ -40,7 +43,7 @@ article {
 .playlist {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;;
   flex-grow: 1;
 }
 
@@ -48,6 +51,8 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0px 10px 0px 10px;
+  flex: 0 0 37px;
 }
 
 #playlist-title {
@@ -57,13 +62,12 @@ article {
 #add-playlist-button {
   position: relative;
   background: none;
-  margin: 0px 5px 0px 0px;
 }
 
 #add-playlist-button:before {
   content: "\002b";
   position: absolute;
-  top: 1;
+  /*top: 1;*/
   left: 0;
   font-size: 20px;
   line-height: 0;
@@ -89,19 +93,46 @@ ul {
 }
 
 li {
-  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 37px;
   background-color: #EAEAEA;
+  padding: 0px 10px 0px 10px;
 }
 
 li:nth-child(even) {
   background-color: #F5F5F5;
 }
 
+#all-track, #fav-track{
+  cursor:pointer;
+}
+
+.list-name {
+  flex: 0 0 300px;
+  color: #7A7A7A;
+  background: none;
+  font-size: 12px;
+  text-align: left;
+}
+
+.delete-button {
+  color: #7A7A7A;
+  background: none;
+  position: relative;
+}
+
+.delete-button:before {
+  content: "\002715";
+}
+
 .track-list {
   height: 280px;
+}
+
+.track-list > li{
+  cursor: pointer;
 }
 
 .player {

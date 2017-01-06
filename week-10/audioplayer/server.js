@@ -43,6 +43,7 @@ app.get('/playlists', function(req, res) {
 });
 
 app.post('/playlists', function (req, res) {
+  console.log(req.body.playlist);
   connection.query('INSERT INTO playlists (playlist, system) VALUES ("' + req.body.playlist + '", 0);', function(err, rows, fields) {
 		if (err) throw err;
   		res.send(rows);
