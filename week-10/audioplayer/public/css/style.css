@@ -1,3 +1,7 @@
+html {
+  background-color: #6b70ff;
+}
+
 body {
   font-family: arial;
   color: #7A7A7A;
@@ -11,7 +15,7 @@ main {
   flex-direction: column;
   border, padding, margin: 0px;
   border-radius: 5px;
-  box-shadow: 5px 5px 10px #F5F5F5;
+  /*box-shadow: 5px 5px 10px #F5F5F5;*/
 }
 
 .informations {

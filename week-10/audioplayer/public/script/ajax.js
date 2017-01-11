@@ -8,14 +8,14 @@ var Ajax = function (){
   	}
 
   	this.createPlaylists = function(listName, callback) {
-      var data = {playlist: listName}
+      var data = {playlist: listName};
   		this.open('POST', 'playlists', data, callback);
   	}
 
   	this.addTrackList = function(listID, trackPath, callback) {
-      console.log(listID)
-      console.log(trackPath)
-      var data = {path: trackPath, playlist_id: listID}
+      console.log(listID);
+      console.log(trackPath);
+      var data = {path: trackPath, playlist_id: listID};
   		this.open('POST', 'playlist-tracks/', data, callback);
   	}
 

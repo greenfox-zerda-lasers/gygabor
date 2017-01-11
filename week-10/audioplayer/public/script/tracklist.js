@@ -48,7 +48,6 @@ var trackListHandling = (function (){
 
   function _createPlaylistItem(id, trackData) {
 		var li = document.createElement('li');
-    console.log(trackData)
 		li.innerHTML = id +'. ' + trackData.artist + ' - ' + trackData.title;
 		li.addEventListener('click', function(){
 			var trackPath = '../mp3/'+trackData.fileName;
