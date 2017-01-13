@@ -1,9 +1,12 @@
-var application = angular.module('application', [
+(function(){
+  // var application = angular.module('application', [
+  //
+  // ]);
 
-]);
+  var app = angular.module('app', []);
 
-var gem = { name: 'Azurite', price: 2.95 };
-var app = angular.module('gemStore', []);
-application.controller('StoreController', function() {
-  this.product = gem;
-});
+  var gem = { name: 'Azurite', price: 2.95 };
+  app.controller('StoreController', function() {
+    this.product = gem;
+  });
+})();
