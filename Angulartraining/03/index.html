@@ -3,17 +3,19 @@
 <html ng-app="angularPractice">
 
   <head>
-    <script src="lib/angular.min.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div ng-contoller="PracticeController">
+    <div ng-controller="PracticeController">
       <p>{{message}}</p>
       <ul>
         <li ng-repeat="task in tasks">{{task}}</li>
       </ul>
     </div>
   </body>
+
+  <script type="text/javascript" src="lib/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
 
 </html>
