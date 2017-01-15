@@ -1,21 +1,17 @@
 <!doctype html>
 
-<html ng-app="app">
+<html ng-app>
 
   <head>
-    <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
+    <script src="angular.min.js"></script>
   </head>
 
-  <body ng-controller="StoreController as store">
-    <div class="product row">
-      <h3>
-        {{store.product.name}}
-      </h3>
-      <em class="pull-right">{{store.product.price}}</em>
-    </div>
+  <body>
+        <input type="text" ng-model="model">
+
+        <h3>
+          {{model}}
+        </h3>
   </body>
-  <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
-  <script type="text/javascript" src="app.js"></script>
 
 </html>
