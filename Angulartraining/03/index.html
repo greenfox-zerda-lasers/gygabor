@@ -1,0 +1,19 @@
+<!doctype html>
+
+<html ng-app="angularPractice">
+
+  <head>
+    <script src="lib/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body>
+    <div ng-contoller="PracticeController">
+      <p>{{message}}</p>
+      <ul>
+        <li ng-repeat="task in tasks">{{task}}</li>
+      </ul>
+    </div>
+  </body>
+
+</html>
