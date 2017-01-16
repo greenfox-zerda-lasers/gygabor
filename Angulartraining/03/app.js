@@ -6,6 +6,6 @@ var angularPractice = angular.module('angularPractice', []);
 angularPractice.controller('PracticeController', function($scope){
 
   $scope.message = "Wow";
-  $scope.tasks = ['01', '02', '03'];
+  $scope.tasks = ['Lajos', 'Mari', 'Gizi', 'Feri'];
 
 });

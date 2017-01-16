@@ -9,8 +9,9 @@
   <body>
     <div ng-controller="PracticeController">
       <p>{{message}}</p>
+      <input type="text" ng-model="search">
       <ul>
-        <li ng-repeat="task in tasks">{{task}}</li>
+        <li ng-repeat="task in tasks | filter: search">{{task}}</li>
       </ul>
     </div>
   </body>
