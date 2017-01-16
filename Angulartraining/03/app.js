@@ -1,5 +1,3 @@
-
-
 var angularPractice = angular.module('angularPractice', []);
 
 
