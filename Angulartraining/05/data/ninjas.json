@@ -1,0 +1,28 @@
+[{
+	"name": "Yoshi",
+	"belt": "green",
+	"rate": 50,
+	"available": true,
+	"thumb": "img/chicken-05.jpg"
+},
+{
+	"name": "Crystal",
+	"belt": "yellow",
+	"rate": 30,
+	"available": true,
+	"thumb": "img/chicken-011.jpg"
+},
+{
+	"name": "Ryu",
+	"belt": "orange",
+	"rate": 10,
+	"available": true,
+	"thumb": "img/Chicken-23.png"
+},
+{
+	"name": "Shaun",
+	"belt": "black",
+	"rate": 1000,
+	"available": true,
+	"thumb": "img/Rooster_portrait2.jpg"
+}]
