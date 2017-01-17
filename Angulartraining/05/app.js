@@ -3,7 +3,9 @@ var myNinjaApp = angular.module('myNinjaApp', ['ngRoute']);
 myNinjaApp.config(['$routeProvider', function($routeProvider){
   $routeProvider
     .when('/home', {
-      templateUrl: 'home.html'
+      templateUrl: 'home.html',
+      controller: 'NinjaController'
+
     })
     .when('/directory', {
       templateUrl: 'directory.html',
@@ -11,6 +13,23 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
     }).otherwise({
       redirectTo: '/home'
     });
+}]);
+
+myNinjaApp.directive('randomNinja', [function(){
+
+  return {
+    restrict: 'E',
+    scope: {
+      ninjas: '=',
+      title: '='
+    },
+    templateUrl: 'random.html',
+
+    controller: function($scope){
+      $scope.random = Math.floor(Math.random() * 4);
+    }
+  };
+
 }]);
 
 
