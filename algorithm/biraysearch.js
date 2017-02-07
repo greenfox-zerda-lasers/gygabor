@@ -8,6 +8,7 @@ function binarySearch(array, number){
   var mid = Math.floor(array.length / 2);
 
   while (mid != 0 && respond != true){
+
     if (number === array[mid]){
       respond = true;
     } else if (number > array[mid]){
@@ -29,4 +30,4 @@ function compareNumbers(a, b) {
   return a - b;
 }
 
-console.log(binarySearch(numbers, 112));
+console.log(binarySearch(numbers, 2));
