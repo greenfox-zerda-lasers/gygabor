@@ -11,7 +11,6 @@ function sum(){
   }
   for (var i = 5; i <= 995; i += 5){
     if (i % 3 !== 0){
-      console.log(i)
       five = five + i;
     }
   }
