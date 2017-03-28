@@ -5,15 +5,15 @@ def readfile(file_name):
     f.close()
     return result
 
-print(readfile('texts/zen_of_python.txt'))
+print(readfile('week-04/day-1/01_io/texts/zen_of_python.txt'))
 
 # 2. Create a method that gets a file_name and a number as param and reads the numberth line of the file
 def readline(file_name, number):
     f = open(file_name)
-    result = f.readlines()[number-1].rstrip()
+    result = f.readlines()[number].rstrip()
     return result
 
-print(readline('texts/zen_of_python.txt', 2))
+print(readline('week-04/day-1/01_io/texts/zen_of_python.txt', 2))
 
 # 3. Create a method that gets a long sentence as param and gives back the contained words in a list
 def words(sentence):

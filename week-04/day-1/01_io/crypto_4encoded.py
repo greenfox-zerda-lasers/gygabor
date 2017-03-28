@@ -1,6 +1,6 @@
 # Create a method that decrypts texts/encoded_zen_lines.txt
 def decrypt(file_name):
-    t = open('texts/encoded_zen_lines.txt')
+    t = open(file_name)
     text = t.read()
     char = 0
     result = ''
@@ -14,3 +14,4 @@ def decrypt(file_name):
             result += chr(char)
     t.close()
     return result
+print(decrypt('texts/encoded_zen_lines.txt'))

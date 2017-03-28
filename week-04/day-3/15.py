@@ -10,17 +10,15 @@ root = Tk()
 
 canvas = Canvas(root, width = 300, height = 300)
 canvas.pack()
-def line_draw(list):
-    j = list[1]
-    k = list[0]
-    for i in range(len(list)/2):
 
+def line_draw(point_list):
+    j = point_list[1]
+    k = point_list[0]
+    for i in range(len(point_list)/2):
         print (j)
         line = canvas.create_line(k[0], k[1], j[0], j[1], fill = 'green')
-
         j[1] += 2
         k += 2
-
 
 points = ([10, 10], [290,  10], [290, 290], [10, 290])
 line_draw(points)
